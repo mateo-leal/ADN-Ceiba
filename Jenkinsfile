@@ -12,7 +12,7 @@ pipeline {
   }
   //Una sección que define las herramientas para “autoinstalar” y poner en la PATH
   tools {
-    jdk 'JDK13_Centos' //Preinstalada en la Configuración del Master
+    jdk 'JDK11_Centos' //Preinstalada en la Configuración del Master
     gradle 'Gradle5.0_Centos' //Preinstalada en la Configuración del Master
   }
   //Aquí comienzan los “items” del Pipeline
