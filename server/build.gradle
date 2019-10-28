@@ -1,9 +1,19 @@
+plugins {
+    id 'jacoco'
+    id 'java'
+    id "org.sonarqube" version "2.7"
+}
+
 group 'com.ceiba'
 version '1.0-SNAPSHOT'
 
-apply plugin: 'java'
-
 sourceCompatibility = 11
+
+sonarqube {
+    properties {
+        property "sonar.sourceEncoding", "UTF-8"
+    }
+}
 
 subprojects {
     repositories {
@@ -21,5 +31,16 @@ subprojects {
     test {
         useJUnitPlatform()
         dependsOn 'cleanTest'
+    }
+
+    sonarqube {
+        properties {
+            property "sonar.sources", "src/main/java"
+            property "sonar.java.binaries", "build/classes/java/main"
+            property "sonar.tests", "src/test/java"
+            property "sonar.test.binaries", "build/classes/java/test"
+            property "sonar.jacoco.reportPaths", "build/jacoco/test.exec"
+            property "sonar.junit.reportPaths", "build/test-results/test"
+        }
     }
 }
