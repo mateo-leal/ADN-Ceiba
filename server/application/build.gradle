@@ -1,6 +1,12 @@
-apply plugin: 'application'
+repositories {
+    mavenCentral()
+    maven { url 'https://projectlombok.org/edge-releases' }
+}
 
 dependencies {
-    compileOnly 'org.projectlombok:lombok:1.16.18'
-    runtime project(':domain')
+    implementation project(':domain')
+    compileOnly 'org.projectlombok:lombok:edge-SNAPSHOT'
+    annotationProcessor 'org.projectlombok:lombok:edge-SNAPSHOT'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.2.0.RELEASE'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
 }

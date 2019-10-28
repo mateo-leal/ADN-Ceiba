@@ -1,4 +1,4 @@
-package com.ceiba.citas_medicas.domain.service;
+package com.ceiba.citas_medicas.domain.repository;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -7,7 +7,7 @@ import java.util.Optional;
  * Servicio genérico que incluye todos los métodos de un CRUD.
  * @param <E> clase de la entidad
  */
-public interface Service<E, PK> {
+public interface Repository<E, PK> {
 
     /**
      * Obtiene una entidad por su id
@@ -24,8 +24,9 @@ public interface Service<E, PK> {
     /**
      * Crea un registro de la entidad
      * @param e entidad
+     * @return entidad creaaa
      */
-    void create(E e);
+    E create(E e);
 
     /**
      * Actualiza un registro

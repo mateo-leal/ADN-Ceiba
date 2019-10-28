@@ -15,8 +15,9 @@ import java.util.Optional;
  */
 @Entity
 @Getter
+@Builder
 @RequiredArgsConstructor
-@AllArgsConstructor(access = AccessLevel.PACKAGE)
+@AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Cita {
 
@@ -24,12 +25,6 @@ public class Cita {
     private LocalDateTime fechaSolicitud;
     private LocalDateTime fechaCita;
     @OneToMany private Persona persona;
-
-    Cita(LocalDateTime fechaSolicitud, LocalDateTime fechaCita, Persona persona) {
-        this.fechaSolicitud = fechaSolicitud;
-        this.fechaCita = fechaCita;
-        this.persona = persona;
-    }
 
     public Optional<Long> getId() {
         return Optional.ofNullable(this.id);

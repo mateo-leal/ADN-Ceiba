@@ -12,17 +12,13 @@ import javax.persistence.Id;
  */
 @Entity
 @Getter
+@Builder
 @RequiredArgsConstructor
-@AllArgsConstructor(access = AccessLevel.PACKAGE)
+@AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Persona {
 
     @Id @GeneratedValue private Long id;
     private String numeroDocumento;
     private String nombres;
-
-    Persona() {
-        this.numeroDocumento = null;
-        this.nombres = null;
-    }
 }

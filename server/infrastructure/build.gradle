@@ -4,7 +4,7 @@ plugins {
 }
 
 dependencies {
-    runtime project(':domain')
+    implementation project(':domain')
     runtime project(':application')
     compile group: 'org.springframework.hateoas', name: 'spring-hateoas', version: '0.25.1.RELEASE'
     implementation 'org.springframework.boot:spring-boot-starter-data-rest'
