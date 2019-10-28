@@ -6,7 +6,9 @@ plugins {
 dependencies {
     runtime project(':domain')
     runtime project(':application')
-    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    compile group: 'org.springframework.hateoas', name: 'spring-hateoas', version: '0.25.1.RELEASE'
+    implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     runtimeOnly 'com.h2database:h2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'

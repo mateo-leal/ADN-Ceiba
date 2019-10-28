@@ -1,0 +1,5 @@
+dependencies {
+    compile group: 'javax.persistence', name: 'javax.persistence-api', version: '2.2'
+    compileOnly 'org.projectlombok:lombok:1.16.18'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
+}
