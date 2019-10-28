@@ -5,11 +5,15 @@ plugins {
 
 dependencies {
     implementation project(':domain')
-    runtime project(':application')
-    compile group: 'org.springframework.hateoas', name: 'spring-hateoas', version: '0.25.1.RELEASE'
+    implementation project(':application')
+
+    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.7.0'
+    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.7.0'
+
     implementation 'org.springframework.boot:spring-boot-starter-data-rest'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
     runtimeOnly 'com.h2database:h2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

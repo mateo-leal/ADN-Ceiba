@@ -2,7 +2,7 @@ package com.ceiba.citas_medicas.domain.service;
 
 import com.ceiba.citas_medicas.domain.model.Cita;
 import com.ceiba.citas_medicas.domain.model.Persona;
-import com.ceiba.citas_medicas.domain.repository.CitaRepository;
+import com.ceiba.citas_medicas.domain.persistence.CitaPersistence;
 import org.junit.jupiter.api.Test;
 
 import javax.persistence.EntityExistsException;
@@ -21,8 +21,8 @@ class CrearCitaServiceTest {
     @Test
     void create_user_when_not_exists() {
         // arrange
-        var repository = mock(CitaRepository.class);
-        doReturn(buildCita()).when(repository).create(any(Cita.class));
+        var repository = mock(CitaPersistence.class);
+        doReturn(buildCita()).when(repository).save(any(Cita.class));
         var service = new CrearCitaService(repository);
 
         // act
@@ -36,7 +36,7 @@ class CrearCitaServiceTest {
     void create_user_when_exists() {
         // arrange
         var cita = Cita.builder().id(1L).build();
-        var repository = mock(CitaRepository.class);
+        var repository = mock(CitaPersistence.class);
         doReturn(Optional.of(buildCita())).when(repository).find(anyLong());
         var service = new CrearCitaService(repository);
 
