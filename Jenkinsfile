@@ -51,7 +51,7 @@ pipeline {
         dir("server") {
           sh 'gradle test'
         }
-      }s
+      }
     }
     stage('Static Code Analysis') {
       steps {
