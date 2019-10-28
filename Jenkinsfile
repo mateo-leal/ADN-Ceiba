@@ -1,3 +1,5 @@
+#!groovy
+
 pipeline {
   //Donde se va a ejecutar el Pipeline
   agent {
@@ -17,10 +19,48 @@ pipeline {
   }
   //Aquí comienzan los “items” del Pipeline
   stages {
-    checkout()
-    build()
-    allTests()
-    staticCodeAnalysis()
+    stage('Checkout') {
+      steps {
+        echo "------------>Checkout<------------"
+        checkout([
+          $class: 'GitSCM',
+          branches: [[name: '*/master']],
+          doGenerateSubmoduleConfigurations: false,
+          extensions: [],
+          gitTool: 'Git_Centos',
+          submoduleCfg: [],
+          userRemoteConfigs: [[
+            credentialsId: 'GitHub_Mateolegi',
+            url:'https://github.com/Mateolegi/ADN-Ceiba'
+          ]]
+        ])
+      }
+    }
+    stage('Build') {
+      steps {
+        echo "------------>Build<------------"
+        dir("server") {
+          //Construir sin tarea test que se ejecutó previamente
+          sh 'gradle build -x test'
+        }
+      }
+    }
+    stage('Tests') {
+      steps {
+        echo "------------>Unit Tests<------------"
+        dir("server") {
+          sh 'gradle test'
+        }
+      }s
+    }
+    stage('Static Code Analysis') {
+      steps {
+        echo '------------>Análisis de código estático<------------'
+        withSonarQubeEnv('Sonar') {
+          sh "${tool name: 'SonarScanner',type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner"
+        }
+      }
+    }
   }
   post {
     always {
@@ -43,58 +83,4 @@ pipeline {
       echo 'For example, if the Pipeline was previously failing but is now successful'
     }
   }
-}
-
-def checkout() {
-  stage('Checkout') {
-      steps {
-        echo "------------>Checkout<------------"
-        checkout([
-          $class: 'GitSCM',
-          branches: [[name: '*/master']],
-          doGenerateSubmoduleConfigurations: false,
-          extensions: [],
-          gitTool: 'Git_Centos',
-          submoduleCfg: [],
-          userRemoteConfigs: [[
-            credentialsId: 'GitHub_Mateolegi',
-            url:'https://github.com/Mateolegi/ADN-Ceiba'
-          ]]
-        ])
-      }
-    }
-}
-
-def build() {
-  stage('Build') {
-      steps {
-        echo "------------>Build<------------"
-        dir("server") {
-          //Construir sin tarea test que se ejecutó previamente
-          sh 'gradle build -x test'
-        }
-      }
-    }
-}
-
-def allTests() {
-  stage('Tests') {
-      steps {
-        echo "------------>Unit Tests<------------"
-        dir("server") {
-          sh 'gradle test'
-        }
-      }s
-    }
-}
-
-def staticCodeAnalysis() {
-  stage('Static Code Analysis') {
-      steps {
-        echo '------------>Análisis de código estático<------------'
-        withSonarQubeEnv('Sonar') {
-          sh "${tool name: 'SonarScanner',type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner"
-        }
-      }
-    }
 }
