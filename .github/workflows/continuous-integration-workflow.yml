@@ -15,7 +15,7 @@ jobs:
         java-version: 11
     - name: Build with Gradle
       run: ./server/gradlew build
-    - name: Run tests with Gradle
-      run: ./server/gradlew test
+    # - name: Run tests with Gradle
+    #   run: ./server/gradlew test
     - name: Jenkinsfile Runner Prepackaged
       uses: jenkinsci/jenkinsfile-runner-github-actions@v0.2
