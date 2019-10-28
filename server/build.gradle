@@ -14,5 +14,11 @@ subprojects {
 
     dependencies {
         testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.6.0-M1'
+        testCompile group: 'org.mockito', name: 'mockito-core', version: '2.1.0'
+    }
+
+    test {
+        useJUnitPlatform()
+        dependsOn 'cleanTest'
     }
 }
