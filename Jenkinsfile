@@ -37,8 +37,10 @@ pipeline {
     stage('Compile & Unit Tests') {
       steps {
         echo "------------>Unit Tests<------------"
-        sh './server/gradlew test'
-      }
+        dir("server") {
+          sh 'gradle test'
+        }
+      }s
     }
     stage('Static Code Analysis') {
       steps {
@@ -51,8 +53,10 @@ pipeline {
     stage('Build') {
       steps {
         echo "------------>Build<------------"
-        //Construir sin tarea test que se ejecutó previamente
-        sh './server/gradlew build -x test'
+        dir("server") {
+          //Construir sin tarea test que se ejecutó previamente
+          sh 'gradle build -x test'
+        }
       }
     }
   }
