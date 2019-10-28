@@ -7,13 +7,13 @@ import java.util.Optional;
  * Servicio genérico que incluye todos los métodos de un CRUD.
  * @param <E> clase de la entidad
  */
-public interface Repository<E, PK> {
+public interface Repository<E, P> {
 
     /**
      * Obtiene una entidad por su id
      * @return id
      */
-    Optional<E> find(PK id);
+    Optional<E> find(P id);
 
     /**
      * Obtiene todas los registros de la tabla
