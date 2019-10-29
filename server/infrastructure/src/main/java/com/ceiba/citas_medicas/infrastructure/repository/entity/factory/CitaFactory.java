@@ -1,20 +1,19 @@
 package com.ceiba.citas_medicas.infrastructure.repository.entity.factory;
 
-import com.ceiba.citas_medicas.domain.model.Cita;
+import com.ceiba.citas_medicas.domain.model.Appointment;
 import com.ceiba.citas_medicas.infrastructure.repository.entity.CitaEntity;
 import org.springframework.beans.BeanUtils;
 
 public class CitaFactory {
 
-    public static Cita toModel(CitaEntity entity) {
-        var cita = new Cita();
-        BeanUtils.copyProperties(entity, cita);
-        return cita;
+    public static Appointment toModel(CitaEntity entity) {
+        var client = PersonaFactory.toModel(entity.getPersona());
+        return new Appointment(entity.getId(), entity.getFechaSolicitud(), entity.getFechaCita(), client);
     }
 
-    public static CitaEntity toEntity(Cita cita) {
+    public static CitaEntity toEntity(Appointment appointment) {
         var entity = new CitaEntity();
-        BeanUtils.copyProperties(cita, entity);
+        BeanUtils.copyProperties(appointment, entity);
         return entity;
     }
 }
