@@ -1,11 +1,5 @@
 repositories {
-    mavenCentral()
-    maven { url 'https://projectlombok.org/edge-releases' }
 }
 
 dependencies {
-    compileOnly 'org.projectlombok:lombok:edge-SNAPSHOT'
-    annotationProcessor 'org.projectlombok:lombok:edge-SNAPSHOT'
-    compile group: 'javax.persistence', name: 'javax.persistence-api', version: '2.2'
-    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
 }

@@ -1,13 +1,11 @@
-package com.ceiba.citas_medicas.domain.service;
+package com.ceiba.citas_medicas.application.service;
 
 import com.ceiba.citas_medicas.domain.model.Cita;
 import com.ceiba.citas_medicas.domain.persistence.CitaPersistence;
 
-import javax.persistence.EntityExistsException;
-
 public class CrearCitaService {
 
-    private CitaPersistence repository;
+    private final CitaPersistence repository;
 
     public CrearCitaService(CitaPersistence repository) {
         this.repository = repository;
@@ -19,10 +17,6 @@ public class CrearCitaService {
     }
 
     private void exists(Cita cita) {
-        cita.getId()
-                .flatMap(repository::find)
-                .ifPresent(cita1 -> {
-                    throw new EntityExistsException();
-                });
+
     }
 }

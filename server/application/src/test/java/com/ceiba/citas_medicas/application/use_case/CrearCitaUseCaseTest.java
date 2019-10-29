@@ -3,7 +3,7 @@ package com.ceiba.citas_medicas.application.use_case;
 import com.ceiba.citas_medicas.application.command.CitaCommand;
 import com.ceiba.citas_medicas.application.factory.CitaFactory;
 import com.ceiba.citas_medicas.application.use_case.adapter.CrearCitaUseCaseAdapter;
-import com.ceiba.citas_medicas.domain.service.CrearCitaService;
+import com.ceiba.citas_medicas.application.service.CrearCitaService;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
