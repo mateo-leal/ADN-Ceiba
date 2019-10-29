@@ -1,0 +1,11 @@
+https://github.com/hirannor/spring-boot-hexagonal-architecture/blob/master/application/src/main/java/eteosf/hexagonal/application/service/config/ApplicationConfiguration.java
+
+https://github.com/JCASTANO/clean/blob/master/cinema/infraestructura/src/main/java/com/ceiba/adaptador/servicio/BeanServicio.java
+
+https://github.com/thebignet/hexagonal-gradle-demo
+
+https://www.freecodecamp.org/news/implementing-a-hexagonal-architecture/
+
+https://github.com/ChristophKnabe/spring-ddd-bank/blob/master/src/main/java/de/beuth/knabe/spring_ddd_bank/rest_interface/ApplicationController.java
+
+https://stackoverflow.com/questions/40384056/consider-defining-a-bean-of-type-package-in-your-configuration-spring-boot
