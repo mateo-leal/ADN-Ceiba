@@ -1,6 +1,9 @@
 package com.ceiba.citas_medicas.infrastructure.repository.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -10,7 +13,10 @@ import javax.persistence.*;
  */
 @Data
 @Entity
-@Table(name = "PERSONA")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "PERSONAS")
 public class PersonaEntity {
 
     @Id @Column @GeneratedValue private Long id;

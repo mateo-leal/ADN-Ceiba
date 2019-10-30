@@ -16,12 +16,18 @@ public class ErrorHandling {
 
     @ExceptionHandler({ PersistenceException.class })
     public ResponseEntity<ErrorMessage> handlePersistenceException(PersistenceException e) {
+        log.error(e.getMessage(), e);
+        return error(BAD_REQUEST, e);
+    }
+
+    @ExceptionHandler({ IllegalArgumentException.class })
+    public ResponseEntity<ErrorMessage> handleIllegalArgumentException(IllegalArgumentException e) {
+        log.error(e.getMessage());
         return error(BAD_REQUEST, e);
     }
 
     private ResponseEntity<ErrorMessage> error(HttpStatus status, Throwable e) {
-        log.error(e.getMessage(), e);
-        var errorMessage = ErrorMessage.builder().statusCode(status).errorMessage(e.getMessage()).build();
+        var errorMessage = ErrorMessage.builder().statusCode(status.value()).errorMessage(e.getMessage()).build();
         return ResponseEntity.status(status).body(errorMessage);
     }
 }

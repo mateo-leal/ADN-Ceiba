@@ -9,7 +9,10 @@ public final class AppointmentFactory {
 
     public static Appointment toModel(AppointmentCommand command) {
         var client = ClientFactory.toModel(command.getClient());
-        return new Appointment(command.getId(), command.getCreatedAt(), command.getAppointmentDate(), client);
+        if (command.getCreatedAt() == null) {
+            return new Appointment(command.getAppointmentDate(), client);
+        }
+        return new Appointment(command.getCreatedAt(), command.getAppointmentDate(), client);
     }
 
     public static AppointmentCommand toCommand(Appointment appointment) {

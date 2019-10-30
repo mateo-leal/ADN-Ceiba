@@ -18,7 +18,7 @@ public class CreateAppointmentService {
     }
 
     private void appointmentExists(Appointment appointment) {
-        if (appointment.getId() == null) {
+        if (appointment.getId() != null) {
             appointmentPersistence.find(appointment.getId())
                     .ifPresent(appointment1 -> {
                         throw new EntityNotExistsException();
