@@ -14,6 +14,8 @@ public class Message {
         BUNDLE = ResourceBundle.getBundle("messages", locale);
     }
 
+    private Message() { }
+
     public static String getMessage(String key) {
         return BUNDLE.getString(key);
     }

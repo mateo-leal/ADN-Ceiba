@@ -5,6 +5,8 @@ import com.ceiba.citas_medicas.domain.model.Appointment;
 
 public class AppointmentFactory {
 
+    private AppointmentFactory() { }
+
     public static Appointment toModel(AppointmentCommand command) {
         var client = ClientFactory.toModel(command.getClient());
         return new Appointment(command.getId(), command.getCreatedAt(), command.getAppointmentDate(), client);

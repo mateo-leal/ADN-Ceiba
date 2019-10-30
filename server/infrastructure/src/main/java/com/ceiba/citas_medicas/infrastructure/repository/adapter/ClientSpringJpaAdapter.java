@@ -22,14 +22,14 @@ public class ClientSpringJpaAdapter implements ClientPersistence {
     }
 
     @Override
-    public Client save(Client Client) {
-        var entity = PersonaFactory.toEntity(Client);
+    public Client save(Client client) {
+        var entity = PersonaFactory.toEntity(client);
         return PersonaFactory.toModel(repository.save(entity));
     }
 
     @Override
-    public void delete(Client Client) {
-        var entity = PersonaFactory.toEntity(Client);
+    public void delete(Client client) {
+        var entity = PersonaFactory.toEntity(client);
         repository.delete(entity);
     }
 

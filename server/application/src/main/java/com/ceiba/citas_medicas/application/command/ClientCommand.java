@@ -15,7 +15,7 @@ import java.io.Serializable;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ClientCommand implements Serializable {
 
-    private final static long serialVersionUID = -4214433336935139060L;
+    private static final long serialVersionUID = -4214433336935139060L;
 
     @JsonProperty("id")
     private Long id;

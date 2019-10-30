@@ -6,6 +6,8 @@ import org.springframework.beans.BeanUtils;
 
 public class PersonaFactory {
 
+    private PersonaFactory () { }
+
     public static Client toModel(PersonaEntity entity) {
         return new Client(entity.getId(), entity.getNumeroDocumento(), entity.getNombres());
     }

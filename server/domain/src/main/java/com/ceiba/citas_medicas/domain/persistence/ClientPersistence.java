@@ -7,9 +7,9 @@ import java.util.Optional;
 
 public interface ClientPersistence {
 
-    Client save(Client Client);
+    Client save(Client client);
 
-    void delete(Client Client);
+    void delete(Client client);
 
     List<Client> findAll();
 

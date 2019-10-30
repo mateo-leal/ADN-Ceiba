@@ -6,6 +6,8 @@ import org.springframework.beans.BeanUtils;
 
 public class CitaFactory {
 
+    private CitaFactory() { }
+
     public static Appointment toModel(CitaEntity entity) {
         var client = PersonaFactory.toModel(entity.getPersona());
         return new Appointment(entity.getId(), entity.getFechaSolicitud(), entity.getFechaCita(), client);

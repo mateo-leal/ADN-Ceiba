@@ -7,6 +7,8 @@ import java.time.LocalDateTime;
 
 public class ArgumentUtils {
 
+    private ArgumentUtils() { }
+
     /**
      * Throws an exception if the arguments is null or whitespace only.
      * @param s argument

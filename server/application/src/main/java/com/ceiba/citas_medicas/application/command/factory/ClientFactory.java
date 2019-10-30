@@ -5,6 +5,8 @@ import com.ceiba.citas_medicas.domain.model.Client;
 
 public class ClientFactory {
 
+    private ClientFactory() { }
+
     public static Client toModel(ClientCommand command) {
         return new Client(command.getId(), command.getDocumentNumber(), command.getFullName());
     }

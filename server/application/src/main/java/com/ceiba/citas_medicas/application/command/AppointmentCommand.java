@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AppointmentCommand implements Serializable {
 
-    private final static long serialVersionUID = 7485296643459028611L;
+    private static final long serialVersionUID = 7485296643459028611L;
 
     @JsonProperty("id")
     private Long id;
