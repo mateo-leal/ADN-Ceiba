@@ -4,7 +4,7 @@ import com.ceiba.citas_medicas.domain.model.Client;
 import com.ceiba.citas_medicas.infrastructure.repository.entity.PersonaEntity;
 import org.springframework.beans.BeanUtils;
 
-public class PersonaFactory {
+public final class PersonaFactory {
 
     private PersonaFactory () { }
 

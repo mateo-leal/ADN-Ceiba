@@ -3,7 +3,7 @@ package com.ceiba.citas_medicas.domain.util;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class Message {
+public final class Message {
 
     private static final String LANGUAGE = "es";
     private static final String COUNTRY = "CO";

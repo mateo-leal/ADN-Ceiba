@@ -3,7 +3,7 @@ package com.ceiba.citas_medicas.application.command.factory;
 import com.ceiba.citas_medicas.application.command.ClientCommand;
 import com.ceiba.citas_medicas.domain.model.Client;
 
-public class ClientFactory {
+public final class ClientFactory {
 
     private ClientFactory() { }
 

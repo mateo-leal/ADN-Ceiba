@@ -4,7 +4,7 @@ import com.ceiba.citas_medicas.domain.model.Appointment;
 import com.ceiba.citas_medicas.infrastructure.repository.entity.CitaEntity;
 import org.springframework.beans.BeanUtils;
 
-public class CitaFactory {
+public final class CitaFactory {
 
     private CitaFactory() { }
 

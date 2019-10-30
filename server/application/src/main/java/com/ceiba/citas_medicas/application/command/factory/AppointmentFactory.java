@@ -3,7 +3,7 @@ package com.ceiba.citas_medicas.application.command.factory;
 import com.ceiba.citas_medicas.application.command.AppointmentCommand;
 import com.ceiba.citas_medicas.domain.model.Appointment;
 
-public class AppointmentFactory {
+public final class AppointmentFactory {
 
     private AppointmentFactory() { }
 

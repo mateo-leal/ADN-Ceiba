@@ -5,7 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 
-public class ArgumentUtils {
+public final class ArgumentUtils {
 
     private ArgumentUtils() { }
 
