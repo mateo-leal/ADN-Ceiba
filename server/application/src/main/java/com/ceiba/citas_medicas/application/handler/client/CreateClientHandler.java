@@ -1,6 +1,7 @@
 package com.ceiba.citas_medicas.application.handler.client;
 
-import com.ceiba.citas_medicas.domain.model.Client;
+import com.ceiba.citas_medicas.application.command.ClientCommand;
+import com.ceiba.citas_medicas.application.command.factory.ClientFactory;
 import com.ceiba.citas_medicas.domain.service.client.CreateClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,7 +16,8 @@ public class CreateClientHandler {
         this.createClientService = createClientService;
     }
 
-    public void execute(Client client) {
+    public void execute(ClientCommand command) {
+        var client = ClientFactory.toModel(command);
         createClientService.execute(client);
     }
 }

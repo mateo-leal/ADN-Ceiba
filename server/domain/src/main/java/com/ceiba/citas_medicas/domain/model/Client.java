@@ -1,5 +1,7 @@
 package com.ceiba.citas_medicas.domain.model;
 
+import java.util.Objects;
+
 import static com.ceiba.citas_medicas.domain.util.Message.getMessage;
 import static com.ceiba.citas_medicas.domain.validation.ArgumentUtils.requireNonBlank;
 
@@ -37,5 +39,20 @@ public class Client {
     }
     public void setFullName(String fullName) {
         this.fullName = fullName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Client)) return false;
+        Client client = (Client) o;
+        return Objects.equals(id, client.id) &&
+                documentNumber.equals(client.documentNumber) &&
+                fullName.equals(client.fullName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
