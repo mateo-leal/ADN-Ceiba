@@ -1,8 +1,5 @@
 package com.ceiba.citas_medicas.domain.model;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-
 import java.time.LocalDateTime;
 
 import static com.ceiba.citas_medicas.domain.util.Message.getMessage;
@@ -13,8 +10,6 @@ import static java.util.Objects.requireNonNull;
  * A {@link Appointment} domain object.
  * @author Mateo Leal
  */
-@Getter
-@EqualsAndHashCode
 public class Appointment {
 
     private Long id;
@@ -40,8 +35,20 @@ public class Appointment {
         this.client = requireNonNull(client);
     }
 
+    public Long getId() {
+        return id;
+    }
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+    public LocalDateTime getAppointmentDate() {
+        return appointmentDate;
+    }
     public void setAppointmentDate(LocalDateTime appointmentDate) {
         this.appointmentDate = appointmentDate;
+    }
+    public Client getClient() {
+        return client;
     }
     public void setClient(Client client) {
         this.client = client;
