@@ -46,7 +46,7 @@ class AppointmentTest {
         var persona = new Client("123", "John Doe");
 
         // act
-        var cita = new Appointment(today.plusDays(1), persona);
+        var cita = new Appointment(today, today.plusDays(1), persona);
 
         // assert
         assertNotNull(cita);
