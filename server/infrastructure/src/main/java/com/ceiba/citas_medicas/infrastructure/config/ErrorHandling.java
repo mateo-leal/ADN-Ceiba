@@ -1,7 +1,7 @@
 package com.ceiba.citas_medicas.infrastructure.config;
 
 import com.ceiba.citas_medicas.domain.exception.PersistenceException;
-import com.ceiba.citas_medicas.infrastructure.controller.command.ErrorMessage;
+import com.ceiba.citas_medicas.infrastructure.controller.command.ErrorMessageEntity;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,19 +15,19 @@ import static org.springframework.http.HttpStatus.BAD_REQUEST;
 public class ErrorHandling {
 
     @ExceptionHandler({ PersistenceException.class })
-    public ResponseEntity<ErrorMessage> handlePersistenceException(PersistenceException e) {
+    public ResponseEntity<ErrorMessageEntity> handlePersistenceException(PersistenceException e) {
         log.error(e.getMessage(), e);
         return error(BAD_REQUEST, e);
     }
 
     @ExceptionHandler({ IllegalArgumentException.class })
-    public ResponseEntity<ErrorMessage> handleIllegalArgumentException(IllegalArgumentException e) {
+    public ResponseEntity<ErrorMessageEntity> handleIllegalArgumentException(IllegalArgumentException e) {
         log.error(e.getMessage());
         return error(BAD_REQUEST, e);
     }
 
-    private ResponseEntity<ErrorMessage> error(HttpStatus status, Throwable e) {
-        var errorMessage = ErrorMessage.builder().statusCode(status.value()).errorMessage(e.getMessage()).build();
+    private ResponseEntity<ErrorMessageEntity> error(HttpStatus status, Throwable e) {
+        var errorMessage = ErrorMessageEntity.builder().statusCode(status.value()).errorMessage(e.getMessage()).build();
         return ResponseEntity.status(status).body(errorMessage);
     }
 }
