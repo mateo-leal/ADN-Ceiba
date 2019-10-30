@@ -15,5 +15,3 @@ jobs:
         java-version: '12.0.2'
     - name: Build with Gradle
       run: ./server/gradlew build
-    - name: Run tests with Gradle
-      run: ./server/gradlew test
