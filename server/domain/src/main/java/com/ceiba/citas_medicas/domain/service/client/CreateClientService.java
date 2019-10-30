@@ -1,6 +1,6 @@
 package com.ceiba.citas_medicas.domain.service.client;
 
-import com.ceiba.citas_medicas.domain.exception.EntityNotExistsException;
+import com.ceiba.citas_medicas.domain.exception.EntityExistsException;
 import com.ceiba.citas_medicas.domain.model.Client;
 import com.ceiba.citas_medicas.domain.persistence.ClientPersistence;
 
@@ -18,10 +18,10 @@ public class CreateClientService {
     }
 
     private void clientExists(Client client) {
-        if (client.getId() == null) {
+        if (client.getId() != null) {
             clientPersistence.find(client.getId())
                     .ifPresent(client1 -> {
-                        throw new EntityNotExistsException();
+                        throw new EntityExistsException();
                     });
         }
     }

@@ -2,12 +2,27 @@ package com.ceiba.citas_medicas.domain.model;
 
 import org.junit.jupiter.api.Test;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class AppointmentTest {
+
+    @Test
+    void instance_two_parameters_constructor() {
+        if (LocalDate.now().getDayOfWeek() != DayOfWeek.SATURDAY
+                && LocalDate.now().getDayOfWeek() != DayOfWeek.SUNDAY) {
+            // arrange - act
+            var client = new Client("123", "John Doe");
+            var appointment = new Appointment(LocalDateTime.now().plusDays(1), client);
+            // assert
+            assertNotNull(appointment);
+        }
+
+    }
 
     @Test
     void instance_when_same_day() {
