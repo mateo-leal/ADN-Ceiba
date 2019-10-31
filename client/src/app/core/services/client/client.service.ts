@@ -14,6 +14,10 @@ export class ClientService {
     return this.httpClient.get<Client[]>(`${this.api}/${id}`);
   }
 
+  public findByDocumentNumber(documentNumber: string) {
+    return this.httpClient.get<Client[]>(`${this.api}?documentNumber=${documentNumber}`);
+  }
+
   public findAll() {
     return this.httpClient.get<Client[]>(this.api);
   }

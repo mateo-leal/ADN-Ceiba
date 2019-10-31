@@ -8,6 +8,7 @@ import { NewAppointmentComponent } from './components/appointment/new-appointmen
 import { AppRoutingModule } from '../app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewClientComponent } from './components/client/new-client/new-client.component';
+import { ClientService } from './services/client/client.service';
 
 
 
@@ -26,7 +27,8 @@ import { NewClientComponent } from './components/client/new-client/new-client.co
     SharedModule
   ],
   providers: [
-    AppointmentService
+    AppointmentService,
+    ClientService
   ]
 })
 export class CoreModule { }
