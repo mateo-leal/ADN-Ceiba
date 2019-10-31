@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 /**
- * A {@link CitaEntity} domain object.
+ * A {@link AppointmentEntity} domain object.
  * @author Mateo Leal
  */
 @Data
@@ -17,11 +17,11 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "CITAS")
-public class CitaEntity {
+@Table(name = "APPOINTMENT")
+public class AppointmentEntity {
 
     @Id @Column @GeneratedValue private Long id;
-    @Column private LocalDateTime fechaSolicitud;
-    @Column private LocalDateTime fechaCita;
-    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }) private PersonaEntity persona;
+    @Column private LocalDateTime createdAt;
+    @Column private LocalDateTime appointmentDate;
+    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }) private ClientEntity client;
 }

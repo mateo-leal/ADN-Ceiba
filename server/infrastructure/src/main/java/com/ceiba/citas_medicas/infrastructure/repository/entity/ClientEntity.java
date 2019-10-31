@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 /**
- * A {@link PersonaEntity} domain object.
+ * A {@link ClientEntity} domain object.
  * @author Mateo Leal
  */
 @Data
@@ -16,10 +16,10 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "PERSONAS")
-public class PersonaEntity {
+@Table(name = "CLIENT")
+public class ClientEntity {
 
     @Id @Column @GeneratedValue private Long id;
-    @Column private String numeroDocumento;
-    @Column private String nombres;
+    @Column private String documentNumber;
+    @Column private String fullName;
 }

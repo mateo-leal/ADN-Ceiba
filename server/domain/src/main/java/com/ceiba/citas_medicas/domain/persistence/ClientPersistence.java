@@ -14,4 +14,6 @@ public interface ClientPersistence {
     List<Client> findAll();
 
     Optional<Client> find(Long id);
+
+    Optional<Client> findByDocumentNumber(String documentNumber);
 }

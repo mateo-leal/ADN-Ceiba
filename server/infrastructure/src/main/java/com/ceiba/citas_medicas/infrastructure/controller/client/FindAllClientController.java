@@ -1,7 +1,7 @@
 package com.ceiba.citas_medicas.infrastructure.controller.client;
 
-import com.ceiba.citas_medicas.application.command.AppointmentCommand;
-import com.ceiba.citas_medicas.application.handler.appointment.FindAllAppointmentHandler;
+import com.ceiba.citas_medicas.application.handler.client.FindAllClientHandler;
+import com.ceiba.citas_medicas.application.handler.client.FindClientHandler;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,25 +10,32 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
+import static org.springframework.http.HttpStatus.NO_CONTENT;
 import static org.springframework.http.HttpStatus.OK;
 
 @RestController
-@RequestMapping("/appointments")
-@Api(value = "Appointments", tags = { "appointments" })
-public class FindAllAppointmentController {
+@RequestMapping("/clients")
+@Api(value = "Clients", tags = { "clients" })
+public class FindAllClientController {
 
-    private final FindAllAppointmentHandler findAllAppointmentHandler;
+    private final FindAllClientHandler findAllClientHandler;
+    private final FindClientHandler findClientHandler;
 
     @Autowired
-    public FindAllAppointmentController(FindAllAppointmentHandler findAllAppointmentHandler) {
-        this.findAllAppointmentHandler = findAllAppointmentHandler;
+    public FindAllClientController(FindAllClientHandler findAllClientHandler,
+                                   FindClientHandler findClientHandler) {
+        this.findAllClientHandler = findAllClientHandler;
+        this.findClientHandler = findClientHandler;
     }
 
     @GetMapping
     @ApiOperation("Find all appointments")
-    public ResponseEntity<List<AppointmentCommand>> execute() {
-        return new ResponseEntity<>(findAllAppointmentHandler.execute(), OK);
+    public ResponseEntity execute(String documentNumber) {
+        if (documentNumber != null) {
+            return findClientHandler.execute(documentNumber)
+                    .map(appointment -> new ResponseEntity<>(appointment, OK))
+                    .orElseGet(() -> new ResponseEntity<>(NO_CONTENT));
+        }
+        return new ResponseEntity<>(findAllClientHandler.execute(), OK);
     }
 }

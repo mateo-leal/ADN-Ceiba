@@ -1,23 +1,23 @@
 package com.ceiba.citas_medicas.infrastructure.repository.entity.factory;
 
 import com.ceiba.citas_medicas.domain.model.Appointment;
-import com.ceiba.citas_medicas.infrastructure.repository.entity.CitaEntity;
+import com.ceiba.citas_medicas.infrastructure.repository.entity.AppointmentEntity;
 
-public final class CitaFactory {
+public final class AppointmentFactory {
 
-    private CitaFactory() { }
+    private AppointmentFactory() { }
 
-    public static Appointment toModel(CitaEntity entity) {
-        var client = PersonaFactory.toModel(entity.getPersona());
-        return new Appointment(entity.getId(), entity.getFechaSolicitud(), entity.getFechaCita(), client);
+    public static Appointment toModel(AppointmentEntity entity) {
+        var client = ClientFactory.toModel(entity.getClient());
+        return new Appointment(entity.getId(), entity.getCreatedAt(), entity.getAppointmentDate(), client);
     }
 
-    public static CitaEntity toEntity(Appointment appointment) {
-        return CitaEntity.builder()
+    public static AppointmentEntity toEntity(Appointment appointment) {
+        return AppointmentEntity.builder()
                 .id(appointment.getId())
-                .fechaCita(appointment.getAppointmentDate())
-                .fechaSolicitud(appointment.getCreatedAt())
-                .persona(PersonaFactory.toEntity(appointment.getClient()))
+                .appointmentDate(appointment.getAppointmentDate())
+                .createdAt(appointment.getCreatedAt())
+                .client(ClientFactory.toEntity(appointment.getClient()))
                 .build();
     }
 }

@@ -19,7 +19,7 @@ class FindClientServiceTest {
         // arrange
         var persistence = mock(ClientPersistence.class);
         var client = new Client("123", "John Doe");
-        doReturn(Optional.of(client)).when(persistence).find(anyLong());
+        doReturn(Optional.of(client)).when(persistence).findByDocumentNumber(anyLong());
         var service = new FindClientService(persistence);
 
         // act
@@ -33,7 +33,7 @@ class FindClientServiceTest {
     void find_when_not_exists() {
         // arrange
         var persistence = mock(ClientPersistence.class);
-        doReturn(Optional.empty()).when(persistence).find(anyLong());
+        doReturn(Optional.empty()).when(persistence).findByDocumentNumber(anyLong());
         var service = new FindClientService(persistence);
 
         // act

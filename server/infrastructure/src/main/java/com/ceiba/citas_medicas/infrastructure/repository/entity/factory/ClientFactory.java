@@ -1,21 +1,21 @@
 package com.ceiba.citas_medicas.infrastructure.repository.entity.factory;
 
 import com.ceiba.citas_medicas.domain.model.Client;
-import com.ceiba.citas_medicas.infrastructure.repository.entity.PersonaEntity;
+import com.ceiba.citas_medicas.infrastructure.repository.entity.ClientEntity;
 
-public final class PersonaFactory {
+public final class ClientFactory {
 
-    private PersonaFactory () { }
+    private ClientFactory() { }
 
-    public static Client toModel(PersonaEntity entity) {
-        return new Client(entity.getId(), entity.getNumeroDocumento(), entity.getNombres());
+    public static Client toModel(ClientEntity entity) {
+        return new Client(entity.getId(), entity.getDocumentNumber(), entity.getFullName());
     }
 
-    public static PersonaEntity toEntity(Client client) {
-        return PersonaEntity.builder()
+    public static ClientEntity toEntity(Client client) {
+        return ClientEntity.builder()
                 .id(client.getId())
-                .nombres(client.getFullName())
-                .numeroDocumento(client.getDocumentNumber())
+                .fullName(client.getFullName())
+                .documentNumber(client.getDocumentNumber())
                 .build();
     }
 }

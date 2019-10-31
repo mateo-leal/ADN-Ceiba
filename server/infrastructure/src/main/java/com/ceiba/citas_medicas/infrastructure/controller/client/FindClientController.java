@@ -1,35 +1,33 @@
 package com.ceiba.citas_medicas.infrastructure.controller.client;
 
-import com.ceiba.citas_medicas.application.command.AppointmentCommand;
-import com.ceiba.citas_medicas.application.handler.appointment.FindAppointmentHandler;
+import com.ceiba.citas_medicas.application.command.ClientCommand;
+import com.ceiba.citas_medicas.application.handler.client.FindClientHandler;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import static org.springframework.http.HttpStatus.NO_CONTENT;
 import static org.springframework.http.HttpStatus.OK;
 
-@RestController
-@RequestMapping("/appointments")
-@Api(value = "Appointments", tags = { "appointments" })
-public class FindAppointmentController {
+//@RestController
+@RequestMapping("/clients")
+@Api(value = "Clients", tags = { "clients" })
+public class FindClientController {
 
-    private final FindAppointmentHandler findAppointmentHandler;
+    private final FindClientHandler findClientHandler;
 
-    @Autowired
-    public FindAppointmentController(FindAppointmentHandler findAppointmentHandler) {
-        this.findAppointmentHandler = findAppointmentHandler;
+//    @Autowired
+    public FindClientController(FindClientHandler findClientHandler) {
+        this.findClientHandler = findClientHandler;
     }
 
-    @GetMapping("/{id}")
-    @ApiOperation("Find an appointment")
-    public ResponseEntity<AppointmentCommand> execute(@PathVariable Long id) {
-        return findAppointmentHandler.execute(id)
+    @GetMapping
+    @ApiOperation("Find a client")
+    public ResponseEntity<ClientCommand> execute(@RequestParam("documentNumber") String documentNumber) {
+        return findClientHandler.execute(documentNumber)
                 .map(appointment -> new ResponseEntity<>(appointment, OK))
                 .orElseGet(() -> new ResponseEntity<>(NO_CONTENT));
     }

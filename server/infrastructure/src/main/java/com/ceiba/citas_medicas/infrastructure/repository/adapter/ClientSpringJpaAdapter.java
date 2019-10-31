@@ -2,8 +2,8 @@ package com.ceiba.citas_medicas.infrastructure.repository.adapter;
 
 import com.ceiba.citas_medicas.domain.model.Client;
 import com.ceiba.citas_medicas.domain.persistence.ClientPersistence;
-import com.ceiba.citas_medicas.infrastructure.repository.PersonaRepository;
-import com.ceiba.citas_medicas.infrastructure.repository.entity.factory.PersonaFactory;
+import com.ceiba.citas_medicas.infrastructure.repository.ClientRepository;
+import com.ceiba.citas_medicas.infrastructure.repository.entity.factory.ClientFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -14,35 +14,41 @@ import java.util.stream.Collectors;
 @Repository
 public class ClientSpringJpaAdapter implements ClientPersistence {
 
-    private final PersonaRepository repository;
+    private final ClientRepository repository;
 
     @Autowired
-    public ClientSpringJpaAdapter(PersonaRepository repository) {
+    public ClientSpringJpaAdapter(ClientRepository repository) {
         this.repository = repository;
     }
 
     @Override
     public Client save(Client client) {
-        var entity = PersonaFactory.toEntity(client);
-        return PersonaFactory.toModel(repository.save(entity));
+        var entity = ClientFactory.toEntity(client);
+        return ClientFactory.toModel(repository.save(entity));
     }
 
     @Override
     public void delete(Client client) {
-        var entity = PersonaFactory.toEntity(client);
+        var entity = ClientFactory.toEntity(client);
         repository.delete(entity);
     }
 
     @Override
     public List<Client> findAll() {
         return repository.findAll().stream()
-                .map(PersonaFactory::toModel)
+                .map(ClientFactory::toModel)
                 .collect(Collectors.toList());
     }
 
     @Override
     public Optional<Client> find(Long id) {
         return repository.findById(id)
-                .map(PersonaFactory::toModel);
+                .map(ClientFactory::toModel);
+    }
+
+    @Override
+    public Optional<Client> findByDocumentNumber(String documentNumber) {
+        return repository.findByDocumentNumber(documentNumber)
+                .map(ClientFactory::toModel);
     }
 }

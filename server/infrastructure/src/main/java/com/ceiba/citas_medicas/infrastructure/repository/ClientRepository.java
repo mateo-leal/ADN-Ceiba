@@ -3,4 +3,9 @@ package com.ceiba.citas_medicas.infrastructure.repository;
 import com.ceiba.citas_medicas.infrastructure.repository.entity.ClientEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface PersonaRepository extends JpaRepository<ClientEntity, Long> { }
+import java.util.Optional;
+
+public interface ClientRepository extends JpaRepository<ClientEntity, Long> {
+
+    Optional<ClientEntity> findByDocumentNumber(String documentNumber);
+}

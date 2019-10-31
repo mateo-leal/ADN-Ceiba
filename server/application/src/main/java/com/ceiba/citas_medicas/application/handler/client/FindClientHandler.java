@@ -18,8 +18,8 @@ public class FindClientHandler {
         this.findClientService = findClientService;
     }
 
-    public Optional<ClientCommand> execute(Long id) {
-        return findClientService.execute(id)
+    public Optional<ClientCommand> execute(String documentNumber) {
+        return findClientService.execute(documentNumber)
                 .map(ClientFactory::toCommand);
     }
 }

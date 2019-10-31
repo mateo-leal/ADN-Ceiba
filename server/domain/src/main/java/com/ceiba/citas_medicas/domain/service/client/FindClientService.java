@@ -13,7 +13,7 @@ public class FindClientService {
         this.clientPersistence = clientPersistence;
     }
 
-    public Optional<Client> execute(Long id) {
-        return clientPersistence.find(id);
+    public Optional<Client> execute(String documentNumber) {
+        return clientPersistence.findByDocumentNumber(documentNumber);
     }
 }

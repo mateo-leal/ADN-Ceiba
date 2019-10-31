@@ -1,6 +1,6 @@
 package com.ceiba.citas_medicas.infrastructure.controller.client;
 
-import com.ceiba.citas_medicas.application.handler.appointment.DeleteAppointmentHandler;
+import com.ceiba.citas_medicas.application.handler.client.DeleteClientHandler;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,22 +14,22 @@ import org.springframework.web.bind.annotation.RestController;
 import static org.springframework.http.HttpStatus.NO_CONTENT;
 
 @RestController
-@RequestMapping("/appointments")
-@Api(value = "Appointments", tags = { "appointments" })
-public class DeleteAppointmentController {
+@RequestMapping("/clients")
+@Api(value = "Clients", tags = { "clients" })
+public class DeleteClientController {
 
-    private final DeleteAppointmentHandler deleteAppointmentHandler;
+    private final DeleteClientHandler deleteClientHandler;
 
     @Autowired
-    public DeleteAppointmentController(DeleteAppointmentHandler deleteAppointmentHandler) {
-        this.deleteAppointmentHandler = deleteAppointmentHandler;
+    public DeleteClientController(DeleteClientHandler deleteClientHandler) {
+        this.deleteClientHandler = deleteClientHandler;
     }
 
     @Transactional
     @DeleteMapping("/{id}")
-    @ApiOperation("Delete an appointment")
+    @ApiOperation("Delete a client")
     public ResponseEntity<Void> execute(@PathVariable Long id) {
-        deleteAppointmentHandler.execute(id);
+        deleteClientHandler.execute(id);
         return new ResponseEntity<>(NO_CONTENT);
     }
 }

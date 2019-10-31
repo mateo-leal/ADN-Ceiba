@@ -19,7 +19,7 @@ public class CreateClientService {
 
     private void clientExists(Client client) {
         if (client.getId() != null) {
-            clientPersistence.find(client.getId())
+            clientPersistence.findByDocumentNumber(client.getDocumentNumber())
                     .ifPresent(client1 -> {
                         throw new EntityExistsException();
                     });

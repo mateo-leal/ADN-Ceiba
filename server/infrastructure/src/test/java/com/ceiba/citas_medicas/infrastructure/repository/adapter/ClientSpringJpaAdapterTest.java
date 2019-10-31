@@ -1,9 +1,9 @@
 package com.ceiba.citas_medicas.infrastructure.repository.adapter;
 
 import com.ceiba.citas_medicas.domain.model.Client;
-import com.ceiba.citas_medicas.infrastructure.repository.PersonaRepository;
-import com.ceiba.citas_medicas.infrastructure.repository.entity.PersonaEntity;
-import com.ceiba.citas_medicas.infrastructure.repository.entity.factory.PersonaFactory;
+import com.ceiba.citas_medicas.infrastructure.repository.ClientRepository;
+import com.ceiba.citas_medicas.infrastructure.repository.entity.ClientEntity;
+import com.ceiba.citas_medicas.infrastructure.repository.entity.factory.ClientFactory;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -21,8 +21,8 @@ class ClientSpringJpaAdapterTest {
     void save() {
         // arrange
         var client = new Client("123", "John Doe");
-        var repository = mock(PersonaRepository.class);
-        doReturn(PersonaFactory.toEntity(client)).when(repository).save(any(PersonaEntity.class));
+        var repository = mock(ClientRepository.class);
+        doReturn(ClientFactory.toEntity(client)).when(repository).save(any(ClientEntity.class));
         var clientSpringJpaAdapter = new ClientSpringJpaAdapter(repository);
         // act
         var savedClient = clientSpringJpaAdapter.save(client);
@@ -34,7 +34,7 @@ class ClientSpringJpaAdapterTest {
     void delete() {
         // arrange
         var client = new Client("123", "John Doe");
-        var repository = mock(PersonaRepository.class);
+        var repository = mock(ClientRepository.class);
         var clientSpringJpaAdapter = new ClientSpringJpaAdapter(repository);
         // act - assert
         clientSpringJpaAdapter.delete(client);
@@ -44,8 +44,8 @@ class ClientSpringJpaAdapterTest {
     void findAll() {
         // arrange
         var client = new Client("123", "John Doe");
-        var repository = mock(PersonaRepository.class);
-        doReturn(List.of(PersonaFactory.toEntity(client))).when(repository).findAll();
+        var repository = mock(ClientRepository.class);
+        doReturn(List.of(ClientFactory.toEntity(client))).when(repository).findAll();
         var clientSpringJpaAdapter = new ClientSpringJpaAdapter(repository);
         // act
         var clientList = clientSpringJpaAdapter.findAll();
@@ -57,11 +57,11 @@ class ClientSpringJpaAdapterTest {
     void find() {
         // arrange
         var client = new Client("123", "John Doe");
-        var repository = mock(PersonaRepository.class);
-        doReturn(Optional.of(PersonaFactory.toEntity(client))).when(repository).findById(anyLong());
+        var repository = mock(ClientRepository.class);
+        doReturn(Optional.of(ClientFactory.toEntity(client))).when(repository).findById(anyLong());
         var clientSpringJpaAdapter = new ClientSpringJpaAdapter(repository);
         // act
-        var optionalClient = clientSpringJpaAdapter.find(1L);
+        var optionalClient = clientSpringJpaAdapter.findByDocumentNumber(1L);
         // assert
         assertTrue(optionalClient::isPresent);
     }

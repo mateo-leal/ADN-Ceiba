@@ -43,7 +43,7 @@ class CreateClientServiceTest {
             assertNotNull(clientArg);
             return null;
         }).when(persistence).save(any(Client.class));
-        doReturn(Optional.of(client)).when(persistence).find(anyLong());
+        doReturn(Optional.of(client)).when(persistence).findByDocumentNumber(anyLong());
         var service = new CreateClientService(persistence);
 
         // act - assert
