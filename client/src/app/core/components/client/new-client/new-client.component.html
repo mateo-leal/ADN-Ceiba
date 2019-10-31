@@ -1,0 +1,35 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Registrar cliente</mat-card-title>
+    <mat-card-subtitle>Permite registrar un cliente en el sistema</mat-card-subtitle>
+  </mat-card-header>
+  <hr>
+  <mat-card-content>
+    <form #clientForm="ngForm" (ngSubmit)="save()" class="client-form">
+      <!-- documentNumber -->
+      <mat-form-field class="full-width">
+        <input [(ngModel)]="client.documentNumber" name="documentNumber"
+            matInput placeholder="Número de documento" required maxlength=20
+            #documentNumber="ngModel">
+      </mat-form-field>
+      <div [hidden]="documentNumber.valid || documentNumber.pristine" class="alert">
+        El número de documento es obligatorio
+      </div>
+      <!-- fullName -->
+      <mat-form-field class="full-width">
+        <input [(ngModel)]="client.fullName" name="fullName"
+            matInput placeholder="Nombre completo" required maxlength=30
+            #fullName=ngModel>
+      </mat-form-field>
+      <div [hidden]="fullName.valid || fullName.pristine" class="alert">
+        El nombre es obligatorio
+      </div>
+    </form>
+  </mat-card-content>
+  <mat-card-actions class="card-actions">
+    <span class="fill-remaining-space"></span>
+    <button mat-fab (click)="goBack()" color="warn"><mat-icon>keyboard_arrow_left</mat-icon></button>
+    <button mat-fab (click)="save()" color="primary"
+        [disabled]="!clientForm.form.valid"><mat-icon>save</mat-icon></button>
+  </mat-card-actions>
+</mat-card>
