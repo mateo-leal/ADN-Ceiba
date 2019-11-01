@@ -4,9 +4,12 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
 import { Client } from 'src/app/core/models/client/client';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ClientService } from 'src/app/core/services/client/client.service';
 import { Appointment } from 'src/app/core/models/appointment/appointment';
+import { DateUtils } from 'src/app/shared/utils/date-utils';
+import { AppointmentService } from 'src/app/core/services/appointment/appointment.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-new-appointment',
@@ -20,8 +23,11 @@ export class NewAppointmentComponent implements OnInit {
   options: Client[];
   filteredOptions: Observable<Client[]>;
 
-  constructor(private route: ActivatedRoute, private clientService: ClientService,
-              private formBuilder: FormBuilder) {
+  constructor(private router: Router, private route: ActivatedRoute,
+              private appointmentService: AppointmentService,
+              private clientService: ClientService,
+              private formBuilder: FormBuilder,
+              private snackbar: MatSnackBar) {
     this.minDate = new Date();
     this.minDate.setDate(this.minDate.getDate() + 1);
   }
@@ -38,8 +44,18 @@ export class NewAppointmentComponent implements OnInit {
     const appointment = new Appointment();
     appointment.client = client;
     appointment.appointmentDate = new Date(this.appointmentForm.value.appointmentDate);
-    console.log(new Date().getTime());
-    console.log(appointment);
+    const [ horas, minutos ] = DateUtils.convert12hto24h(this.appointmentForm.value.appointmentTime);
+    appointment.appointmentDate.setHours(horas, minutos, 0);
+    this.appointmentService.create(appointment).subscribe(() => {
+      this.snackbar.open('La cita se registró correctamente', 'Cerrar', {
+        duration: 3000,
+      });
+      this.router.navigate(['/appointments']);
+    }, () => {
+      this.snackbar.open('Ocurrió un error almacenando la cita', 'Cerrar', {
+        duration: 10000,
+      });
+    });
   }
 
   private _filter(value: string): Client[] {
