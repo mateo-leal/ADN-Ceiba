@@ -1,0 +1,50 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Registrar cliente</mat-card-title>
+    <mat-card-subtitle>Permite registrar un cliente en el sistema</mat-card-subtitle>
+  </mat-card-header>
+  <hr>
+  <mat-card-content>
+    <form [formGroup]="clientForm" (ngSubmit)="save()" class="client-form">
+      <!-- documentNumber -->
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Número de documento"
+            formControlName="documentNumber">
+      </mat-form-field>
+      <div class="errors" *ngIf="clientForm.get('documentNumber').dirty">
+          {{ clientForm.get('documentNumber').getError() }}
+        <div *ngIf="clientForm.get('documentNumber').hasError('required')" class="alert">
+          El número de documento es obligatorio
+        </div>
+        <div *ngIf="clientForm.get('documentNumber').hasError('maxlength')" class="alert">
+          El número de documento debe contener 20 o menos carácteres
+        </div>
+      </div>
+      <mat-error *ngIf="clientExists" >
+        Ya existe un cliente con ese número de documento
+      </mat-error>
+      <!-- fullName -->
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Nombre completo"
+            formControlName="fullName">
+      </mat-form-field>
+      <div *ngIf="!clientForm.get('fullName').pristine">
+        <mat-error *ngIf="clientForm.get('fullName').hasError('required')" >
+          El nombre es obligatorio
+        </mat-error>
+        <mat-error *ngIf="clientForm.get('fullName').hasError('maxlength')" >
+          El nombre debe contener 30 o menos carácteres
+        </mat-error>
+        <mat-error *ngIf="clientForm.get('fullName').hasError('pattern')" >
+          El nombre solo puede contener letras
+        </mat-error>
+      </div>
+    </form>
+  </mat-card-content>
+  <mat-card-actions class="card-actions">
+    <span class="fill-remaining-space"></span>
+    <button mat-fab (click)="goBack()" color="warn"><mat-icon>keyboard_arrow_left</mat-icon></button>
+    <button mat-fab (click)="save()" color="primary"
+        [disabled]="!clientForm.valid || clientExists"><mat-icon>save</mat-icon></button>
+  </mat-card-actions>
+</mat-card>

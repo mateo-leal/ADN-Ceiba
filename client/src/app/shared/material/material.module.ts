@@ -46,7 +46,9 @@ import {PortalModule} from '@angular/cdk/portal';
 import {CdkStepperModule} from '@angular/cdk/stepper';
 import {CdkTableModule} from '@angular/cdk/table';
 import {CdkTreeModule} from '@angular/cdk/tree';
-import {DragDropModule} from '@angular/cdk/drag-drop';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
 /**
  * NgModule that includes all Material modules.
@@ -101,6 +103,8 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
+    // custom
+    NgxMaterialTimepickerModule
   ]
 })
 export class MaterialModule {}

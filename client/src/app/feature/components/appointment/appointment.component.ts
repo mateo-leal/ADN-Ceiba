@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AppointmentService } from '../../services/appointment/appointment.service';
-import { Appointment } from '../../models/appointment/appointment';
+import { Appointment } from 'src/app/core/models/appointment/appointment';
+import { AppointmentService } from 'src/app/core/services/appointment/appointment.service';
 
 @Component({
   selector: 'app-appointment',
@@ -15,8 +15,8 @@ export class AppointmentComponent implements OnInit {
   constructor(private appointmentService: AppointmentService) { }
 
   ngOnInit() {
-    this.appointmentService.findAll()
-      .subscribe(appointments => this.appointments = appointments);
+    // this.appointmentService.findAll()
+    //   .subscribe(appointments => this.appointments = appointments);
   }
 
 }

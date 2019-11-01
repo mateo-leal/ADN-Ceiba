@@ -5,12 +5,13 @@
   </mat-card-header>
   <hr>
   <mat-card-content>
-    <form class="appointment-form">
+    <form [formGroup]="appointmentForm" (ngSubmit)="save()" class="appointment-form">
       <mat-form-field class="full-width">
         <input type="text" placeholder="Cliente" aria-label="Cliente"
-            matInput [formControl]="appointmentFormControl" [matAutocomplete]="auto">
+            matInput [matAutocomplete]="auto"
+            formControlName="client">
         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option.fullName">
             {{ option.fullName }}
           </mat-option>
         </mat-autocomplete>
@@ -20,16 +21,27 @@
           add
         </mat-icon>
       </mat-form-field>
-      <mat-form-field class="full-width">
-        <input matInput [min]="minDate" [matDatepicker]="picker" placeholder="Fecha de la cita" disabled>
+      <mat-form-field class="full-width" (click)="picker.open()">
+        <input matInput [min]="minDate" [matDatepicker]="picker"
+            placeholder="Fecha de la cita" readonly
+            formControlName="appointmentDate">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker disabled="false" touchUi #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="full-width" (click)="pickerTime.open()">
+        <input matInput [ngxTimepicker]="pickerTime"
+            placeholder="Hora de la cita" readonly
+            formControlName="appointmentTime">
+        <ngx-material-timepicker #pickerTime></ngx-material-timepicker>
+        <mat-icon class="new-client-button" matSuffix>
+          access_time
+        </mat-icon>
       </mat-form-field>
     </form>
   </mat-card-content>
   <mat-card-actions class="card-actions">
     <span class="fill-remaining-space"></span>
     <button mat-fab [routerLink]="['/appointments']" color="warn"><mat-icon>keyboard_arrow_left</mat-icon></button>
-    <button mat-fab [routerLink]="['/appointments']" color="primary"><mat-icon>save</mat-icon></button>
+    <button mat-fab [disabled]="!appointmentForm.valid" (click)="save()" color="primary"><mat-icon>save</mat-icon></button>
   </mat-card-actions>
 </mat-card>
