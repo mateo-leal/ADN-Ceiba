@@ -6,15 +6,18 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import static com.ceiba.citas_medicas.infrastructure.config.Constants.FRONT_END_URL;
 import static org.springframework.http.HttpStatus.NO_CONTENT;
 import static org.springframework.http.HttpStatus.OK;
 
 @RestController
 @RequestMapping("/clients")
+@CrossOrigin(origins = FRONT_END_URL)
 @Api(value = "Clients", tags = { "clients" })
 public class FindAllClientController {
 

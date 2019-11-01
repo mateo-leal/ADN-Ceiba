@@ -20,7 +20,7 @@ class DeleteClientServiceTest {
         // arrange
         var client = new Client(1L, "123", "John Doe");
         var persistence = mock(ClientPersistence.class);
-        doReturn(Optional.of(client)).when(persistence).findByDocumentNumber(anyLong());
+        doReturn(Optional.of(client)).when(persistence).find(anyLong());
         var service = new DeleteClientService(persistence);
 
         // act - assert
@@ -31,7 +31,7 @@ class DeleteClientServiceTest {
     void delete_when_not_exists() {
         // arrange
         var persistence = mock(ClientPersistence.class);
-        doReturn(Optional.empty()).when(persistence).findByDocumentNumber(anyLong());
+        doReturn(Optional.empty()).when(persistence).find(anyLong());
         var service = new DeleteClientService(persistence);
 
         // act - assert

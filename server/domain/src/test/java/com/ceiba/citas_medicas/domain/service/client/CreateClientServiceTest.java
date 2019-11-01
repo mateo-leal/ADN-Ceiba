@@ -9,7 +9,6 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 
 class CreateClientServiceTest {
@@ -43,7 +42,7 @@ class CreateClientServiceTest {
             assertNotNull(clientArg);
             return null;
         }).when(persistence).save(any(Client.class));
-        doReturn(Optional.of(client)).when(persistence).findByDocumentNumber(anyLong());
+        doReturn(Optional.of(client)).when(persistence).findByDocumentNumber(anyString());
         var service = new CreateClientService(persistence);
 
         // act - assert

@@ -13,11 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+import static com.ceiba.citas_medicas.infrastructure.config.Constants.FRONT_END_URL;
 import static org.springframework.http.HttpStatus.OK;
 
 @RestController
 @RequestMapping("/appointments")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = FRONT_END_URL)
 @Api(value = "Appointments", tags = { "appointments" })
 public class FindAllAppointmentController {
 

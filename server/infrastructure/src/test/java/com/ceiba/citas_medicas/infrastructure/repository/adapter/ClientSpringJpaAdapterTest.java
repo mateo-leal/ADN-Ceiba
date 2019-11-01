@@ -10,8 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 
@@ -61,7 +60,20 @@ class ClientSpringJpaAdapterTest {
         doReturn(Optional.of(ClientFactory.toEntity(client))).when(repository).findById(anyLong());
         var clientSpringJpaAdapter = new ClientSpringJpaAdapter(repository);
         // act
-        var optionalClient = clientSpringJpaAdapter.findByDocumentNumber(1L);
+        var optionalClient = clientSpringJpaAdapter.find(1L);
+        // assert
+        assertTrue(optionalClient::isPresent);
+    }
+
+    @Test
+    void findByDocumentNumber() {
+        // arrange
+        var client = new Client("123", "John Doe");
+        var repository = mock(ClientRepository.class);
+        doReturn(Optional.of(ClientFactory.toEntity(client))).when(repository).findByDocumentNumber(anyString());
+        var clientSpringJpaAdapter = new ClientSpringJpaAdapter(repository);
+        // act
+        var optionalClient = clientSpringJpaAdapter.findByDocumentNumber("");
         // assert
         assertTrue(optionalClient::isPresent);
     }

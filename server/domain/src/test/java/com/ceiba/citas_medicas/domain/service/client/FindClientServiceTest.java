@@ -8,7 +8,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 
@@ -19,11 +19,11 @@ class FindClientServiceTest {
         // arrange
         var persistence = mock(ClientPersistence.class);
         var client = new Client("123", "John Doe");
-        doReturn(Optional.of(client)).when(persistence).findByDocumentNumber(anyLong());
+        doReturn(Optional.of(client)).when(persistence).findByDocumentNumber(anyString());
         var service = new FindClientService(persistence);
 
         // act
-        var optionalAppointment = service.execute(1L);
+        var optionalAppointment = service.execute("");
 
         // assert
         assertTrue(optionalAppointment::isPresent);
@@ -33,11 +33,11 @@ class FindClientServiceTest {
     void find_when_not_exists() {
         // arrange
         var persistence = mock(ClientPersistence.class);
-        doReturn(Optional.empty()).when(persistence).findByDocumentNumber(anyLong());
+        doReturn(Optional.empty()).when(persistence).findByDocumentNumber(anyString());
         var service = new FindClientService(persistence);
 
         // act
-        var optionalAppointment = service.execute(1L);
+        var optionalAppointment = service.execute("1L");
 
         // assert
         assertFalse(optionalAppointment::isPresent);
