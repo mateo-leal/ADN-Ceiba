@@ -9,4 +9,6 @@ import java.util.List;
 public interface AppointmentRepository extends JpaRepository<AppointmentEntity, Long> {
 
     List<AppointmentEntity> findByClient(ClientEntity clientEntity);
+
+    List<AppointmentEntity> findByClient_Id(Long clientId);
 }

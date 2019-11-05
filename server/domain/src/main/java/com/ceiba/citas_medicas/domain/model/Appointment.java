@@ -28,7 +28,7 @@ public class Appointment {
     public Appointment(Long id, LocalDateTime createdAt, LocalDateTime appointmentDate, Client client) {
         this.id = id;
         this.createdAt = requireNonNull(createdAt, getMessage("obligatorio.fecha_creacion"));
-//        requireNotWeekend(createdAt, getMessage("obligatorio.fecha_creacion_fin_semana"));
+        requireNotWeekend(createdAt, getMessage("obligatorio.fecha_creacion_fin_semana"));
         this.appointmentDate = requireNonNull(appointmentDate, getMessage("obligatorio.fecha_cita"));
         requireDifferentDay(appointmentDate, createdAt, getMessage("obligatorio.fecha_creacion_igual_cita"));
         requireDateGreater(createdAt, appointmentDate, getMessage("obligatorio.fecha_cita_mayor_creacion"));
