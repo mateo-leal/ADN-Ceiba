@@ -4,6 +4,7 @@ import { NewClientComponent } from './new-client/new-client.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ClientComponent } from './client.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     SharedModule
   ],
   exports: [],
-  declarations: [ NewClientComponent ],
+  declarations: [ NewClientComponent, ClientComponent ],
   providers: [],
 })
 export class ClientModule { }

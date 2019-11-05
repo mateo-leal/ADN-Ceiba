@@ -15,7 +15,7 @@ import { CommonModule } from '@angular/common';
     ReactiveFormsModule,
     SharedModule
   ],
-  declarations: [ AppointmentComponent, NewAppointmentComponent ],
+  declarations: [AppointmentComponent, NewAppointmentComponent],
   providers: [],
   exports: [],
 })
