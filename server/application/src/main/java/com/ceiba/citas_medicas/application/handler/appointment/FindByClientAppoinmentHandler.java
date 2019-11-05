@@ -1,4 +1,29 @@
 package com.ceiba.citas_medicas.application.handler.appointment;
 
+import com.ceiba.citas_medicas.application.command.AppointmentCommand;
+import com.ceiba.citas_medicas.application.command.ClientCommand;
+import com.ceiba.citas_medicas.application.command.factory.AppointmentFactory;
+import com.ceiba.citas_medicas.application.command.factory.ClientFactory;
+import com.ceiba.citas_medicas.domain.service.appointment.FindByClientAppoinmentService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Component
 public class FindByClientAppoinmentHandler {
+
+    private final FindByClientAppoinmentService findByClientAppoinmentService;
+
+    @Autowired
+    public FindByClientAppoinmentHandler(FindByClientAppoinmentService findByClientAppoinmentService) {
+        this.findByClientAppoinmentService = findByClientAppoinmentService;
+    }
+
+    public List<AppointmentCommand> execute(ClientCommand clientCommand) {
+        return findByClientAppoinmentService.execute(ClientFactory.toModel(clientCommand)).stream()
+                .map(AppointmentFactory::toCommand)
+                .collect(Collectors.toList());
+    }
 }

@@ -24,9 +24,3 @@ dependencies {
     runtimeOnly 'com.h2database:h2'
     testCompile 'org.springframework.boot:spring-boot-starter-test'
 }
-
-test {
-    filter {
-        includeTestsMatching "com.ceiba.citas_medicas.infrastructure"
-    }
-}

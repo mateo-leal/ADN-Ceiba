@@ -27,4 +27,8 @@ public class ClientCommand implements Serializable {
     @NotBlank
     @JsonProperty("fullName")
     private String fullName;
+
+    public ClientCommand(String documentNumber) {
+        this.documentNumber = documentNumber;
+    }
 }
