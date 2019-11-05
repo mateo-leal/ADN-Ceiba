@@ -1,5 +1,7 @@
 import { browser, logging } from 'protractor';
 import faker = require('faker');
+import { AppointmentPage } from './appointment.po';
+import { NewAppointmentPage } from './new-appointment.po';
 
 describe('Create appointment test', () => {
   let page: AppointmentPage;

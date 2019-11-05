@@ -1,11 +1,11 @@
 import { browser, by, element } from 'protractor';
 
-export class ClientPage {
+export class AppointmentPage {
   navigateTo() {
-    return browser.get(`${browser.baseUrl}/clients`) as Promise<any>;
+    return browser.get(`${browser.baseUrl}/appointments`) as Promise<any>;
   }
 
   clickNewButton() {
-    return element(by.id('new-client-button')).click();
+    return element(by.id('new-appointment-button')).click();
   }
 }
