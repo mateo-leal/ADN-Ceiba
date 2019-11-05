@@ -14,6 +14,10 @@ export class AppointmentService {
     return this.httpClient.get<Appointment[]>(`${this.api}/${id}`);
   }
 
+  public findByClient(clientDocumentNumber: string) {
+    return this.httpClient.get<Appointment[]>(`${this.api}?clientDocumentNumber${clientDocumentNumber}`);
+  }
+
   public findAll() {
     return this.httpClient.get<Appointment[]>(this.api);
   }

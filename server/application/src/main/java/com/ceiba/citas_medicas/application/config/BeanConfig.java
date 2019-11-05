@@ -2,10 +2,7 @@ package com.ceiba.citas_medicas.application.config;
 
 import com.ceiba.citas_medicas.domain.persistence.AppointmentPersistence;
 import com.ceiba.citas_medicas.domain.persistence.ClientPersistence;
-import com.ceiba.citas_medicas.domain.service.appointment.CreateAppointmentService;
-import com.ceiba.citas_medicas.domain.service.appointment.DeleteAppointmentService;
-import com.ceiba.citas_medicas.domain.service.appointment.FindAllAppointmentService;
-import com.ceiba.citas_medicas.domain.service.appointment.FindAppointmentService;
+import com.ceiba.citas_medicas.domain.service.appointment.*;
 import com.ceiba.citas_medicas.domain.service.client.CreateClientService;
 import com.ceiba.citas_medicas.domain.service.client.DeleteClientService;
 import com.ceiba.citas_medicas.domain.service.client.FindAllClientService;
@@ -35,6 +32,11 @@ public class BeanConfig {
     @Bean
     public DeleteAppointmentService getDeleteAppointmentService(AppointmentPersistence appointmentPersistence) {
         return new DeleteAppointmentService(appointmentPersistence);
+    }
+
+    @Bean
+    public FindByClientAppoinmentService getFindByClientAppoinmentService(AppointmentPersistence appointmentPersistence) {
+        return new FindByClientAppoinmentService(appointmentPersistence);
     }
 
     @Bean

@@ -3,6 +3,7 @@ package com.ceiba.citas_medicas.infrastructure.repository.adapter;
 import com.ceiba.citas_medicas.domain.model.Appointment;
 import com.ceiba.citas_medicas.domain.model.Client;
 import com.ceiba.citas_medicas.infrastructure.repository.AppointmentRepository;
+import com.ceiba.citas_medicas.infrastructure.repository.ClientRepository;
 import com.ceiba.citas_medicas.infrastructure.repository.entity.AppointmentEntity;
 import com.ceiba.citas_medicas.infrastructure.repository.entity.factory.AppointmentFactory;
 import org.junit.jupiter.api.Test;
@@ -28,8 +29,9 @@ class AppointmentSpringJpaAdapterTest {
         var client = new Client("123", "John Doe");
         var appointment = new Appointment(id, today, today.plusDays(1), client);
         var repository = mock(AppointmentRepository.class);
+        var clientRepository = mock(ClientRepository.class);
         doReturn(AppointmentFactory.toEntity(appointment)).when(repository).save(any(AppointmentEntity.class));
-        var appointmentSpringJpaAdapter = new AppointmentSpringJpaAdapter(repository);
+        var appointmentSpringJpaAdapter = new AppointmentSpringJpaAdapter(repository, clientRepository);
         // act
         var savedAppointment = appointmentSpringJpaAdapter.save(appointment);
         // assert
@@ -44,7 +46,8 @@ class AppointmentSpringJpaAdapterTest {
         var client = new Client("123", "John Doe");
         var appointment = new Appointment(id, today, today.plusDays(1), client);
         var repository = mock(AppointmentRepository.class);
-        var appointmentSpringJpaAdapter = new AppointmentSpringJpaAdapter(repository);
+        var clientRepository = mock(ClientRepository.class);
+        var appointmentSpringJpaAdapter = new AppointmentSpringJpaAdapter(repository, clientRepository);
         // act - assert
         appointmentSpringJpaAdapter.delete(appointment);
     }
@@ -57,8 +60,9 @@ class AppointmentSpringJpaAdapterTest {
         var client = new Client("123", "John Doe");
         var appointment = new Appointment(id, today, today.plusDays(1), client);
         var repository = mock(AppointmentRepository.class);
+        var clientRepository = mock(ClientRepository.class);
         doReturn(List.of(AppointmentFactory.toEntity(appointment))).when(repository).findAll();
-        var appointmentSpringJpaAdapter = new AppointmentSpringJpaAdapter(repository);
+        var appointmentSpringJpaAdapter = new AppointmentSpringJpaAdapter(repository, clientRepository);
         // act
         var appointmentList = appointmentSpringJpaAdapter.findAll();
         // assert
@@ -73,8 +77,9 @@ class AppointmentSpringJpaAdapterTest {
         var client = new Client("123", "John Doe");
         var appointment = new Appointment(id, today, today.plusDays(1), client);
         var repository = mock(AppointmentRepository.class);
+        var clientRepository = mock(ClientRepository.class);
         doReturn(Optional.of(AppointmentFactory.toEntity(appointment))).when(repository).findById(anyLong());
-        var appointmentSpringJpaAdapter = new AppointmentSpringJpaAdapter(repository);
+        var appointmentSpringJpaAdapter = new AppointmentSpringJpaAdapter(repository, clientRepository);
         // act
         var optionalAppointment = appointmentSpringJpaAdapter.find(1L);
         // assert

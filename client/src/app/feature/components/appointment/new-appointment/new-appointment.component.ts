@@ -44,18 +44,16 @@ export class NewAppointmentComponent implements OnInit {
     const appointment = new Appointment();
     appointment.client = client;
     appointment.appointmentDate = new Date(this.appointmentForm.value.appointmentDate);
-    const [ horas, minutos ] = DateUtils.convert12hto24h(this.appointmentForm.value.appointmentTime);
-    appointment.appointmentDate.setHours(horas, minutos, 0);
+    const [horas, minutos] = DateUtils.convert12hto24h(this.appointmentForm.value.appointmentTime);
+    console.log(horas);
+    console.log(minutos);
+    appointment.appointmentDate.setHours(horas - 5, minutos, 0);
     this.appointmentService.create(appointment).subscribe(() => {
       this.snackbar.open('La cita se registró correctamente', 'Cerrar', {
         duration: 3000,
       });
       this.router.navigate(['/appointments']);
-    }, () => {
-      this.snackbar.open('Ocurrió un error almacenando la cita', 'Cerrar', {
-        duration: 10000,
-      });
-    });
+    }, this._handleError);
   }
 
   private _filter(value: string): Client[] {
@@ -89,6 +87,16 @@ export class NewAppointmentComponent implements OnInit {
         startWith(''),
         map(value => this._filter(value))
       );
+    });
+  }
+
+  private _handleError(error: any) {
+    let message = 'Ocurrió un error almacenando la cita';
+    if (error.error.statusCode) {
+      message = error.error.errorMessage;
+    }
+    this.snackbar.open(message, 'Cerrar', {
+      duration: 10000,
     });
   }
 }
