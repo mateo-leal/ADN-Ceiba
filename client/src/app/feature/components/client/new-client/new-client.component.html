@@ -1,6 +1,6 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>Registrar cliente</mat-card-title>
+    <mat-card-title id ="new-client-header">Registrar cliente</mat-card-title>
     <mat-card-subtitle>Permite registrar un cliente en el sistema</mat-card-subtitle>
   </mat-card-header>
   <hr>
@@ -8,7 +8,7 @@
     <form [formGroup]="clientForm" (ngSubmit)="save()" class="client-form">
       <!-- documentNumber -->
       <mat-form-field class="full-width">
-        <input matInput placeholder="Número de documento"
+        <input matInput placeholder="Número de documento" id="documentNumberInput"
             formControlName="documentNumber">
       </mat-form-field>
       <div class="errors" *ngIf="clientForm.get('documentNumber').dirty">
@@ -25,7 +25,7 @@
       </mat-error>
       <!-- fullName -->
       <mat-form-field class="full-width">
-        <input matInput placeholder="Nombre completo"
+        <input matInput placeholder="Nombre completo" id="fullNameInput"
             formControlName="fullName">
       </mat-form-field>
       <div *ngIf="!clientForm.get('fullName').pristine">
@@ -44,7 +44,7 @@
   <mat-card-actions class="card-actions">
     <span class="fill-remaining-space"></span>
     <button mat-fab (click)="goBack()" color="warn"><mat-icon>keyboard_arrow_left</mat-icon></button>
-    <button mat-fab (click)="save()" color="primary"
+    <button mat-fab (click)="save()" color="primary" id="saveClientButton"
         [disabled]="!clientForm.valid || clientExists"><mat-icon>save</mat-icon></button>
   </mat-card-actions>
 </mat-card>
