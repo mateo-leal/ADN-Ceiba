@@ -54,6 +54,7 @@ class AppointmentFactoryTest {
         assertEquals(appointment.getId(), command.getId());
         assertEquals(appointment.getAppointmentDate(), command.getAppointmentDate());
         assertEquals(appointment.getCreatedAt(), command.getCreatedAt());
+        assertEquals(appointment.getPrice(), command.getPrice());
         assertEquals(appointment.getClient(), ClientFactory.toModel(command.getClient()));
     }
 }

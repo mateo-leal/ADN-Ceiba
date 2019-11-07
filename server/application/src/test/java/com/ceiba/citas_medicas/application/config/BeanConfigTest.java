@@ -50,6 +50,16 @@ class BeanConfigTest {
     }
 
     @Test
+    void getFindByClientAppoinmentService() {
+        // arrange
+        var beanConfig = new BeanConfig();
+        var appointmentPersistence = mock(AppointmentPersistence.class);
+
+        // act - assert
+        assertNotNull(beanConfig.getFindByClientAppoinmentService(appointmentPersistence));
+    }
+
+    @Test
     void getCreateClientService() {
         // arrange
         var beanConfig = new BeanConfig();
