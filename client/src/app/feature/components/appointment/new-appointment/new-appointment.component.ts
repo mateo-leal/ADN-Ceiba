@@ -3,13 +3,13 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
-import { Client } from 'src/app/core/models/client/client';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClientService } from 'src/app/core/services/client/client.service';
-import { Appointment } from 'src/app/core/models/appointment/appointment';
+import { Appointment } from 'src/app/core/models/appointment';
 import { DateUtils } from 'src/app/shared/utils/date-utils';
 import { AppointmentService } from 'src/app/core/services/appointment/appointment.service';
 import { MatSnackBar } from '@angular/material';
+import { Client } from 'src/app/core/models/client';
 
 @Component({
   selector: 'app-new-appointment',

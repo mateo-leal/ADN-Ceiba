@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Appointment } from 'src/app/core/models/appointment/appointment';
+import { Appointment } from 'src/app/core/models/appointment';
 import { AppointmentService } from 'src/app/core/services/appointment/appointment.service';
 import { ConfirmDeleteDialogComponent } from '../../../shared/components/confirm-delete-dialog/confirm-delete-dialog.component';
 import { MatDialog, MatSnackBar } from '@angular/material';
@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
 export class AppointmentComponent implements OnInit {
 
   appointments: Appointment[];
-  displayedColumns: string[] = ['client', 'appointmentDate', 'createdAt', 'actions'];
+  displayedColumns: string[] = ['client', 'appointmentDate', 'createdAt', 'price', 'actions'];
 
   constructor(private appointmentService: AppointmentService,
               private dialog: MatDialog,

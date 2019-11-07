@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Client } from 'src/app/core/models/client/client';
 import { ClientService } from 'src/app/core/services/client/client.service';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { ConfirmDeleteDialogComponent } from 'src/app/shared/components/confirm-delete-dialog/confirm-delete-dialog.component';
 import { Observable } from 'rxjs';
 import { AppointmentService } from 'src/app/core/services/appointment/appointment.service';
+import { Client } from 'src/app/core/models/client';
 
 @Component({
   selector: 'app-client',

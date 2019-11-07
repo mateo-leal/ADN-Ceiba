@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
-import { Client } from '../../models/client/client';
+import { HttpClient } from '@angular/common/http';
+import { Client } from '../../models/client';
+import { environment } from '../../../../environments/environment';
 
 @Injectable()
 export class ClientService {
 
-
-  api = 'http://localhost:8080/clients';
+  api = `${environment.api}/clients`;
 
   constructor(private httpClient: HttpClient) { }
 

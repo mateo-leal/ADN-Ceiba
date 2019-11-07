@@ -7,7 +7,7 @@
   <mat-card-content>
     <form [formGroup]="appointmentForm" (ngSubmit)="save()" class="appointment-form">
       <mat-form-field class="full-width">
-        <input type="text" placeholder="Cliente" aria-label="Cliente" id="cliente"
+        <input type="text" placeholder="Cliente" aria-label="Cliente" id="clientInput"
             matInput [matAutocomplete]="auto"
             formControlName="client">
         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
@@ -15,21 +15,21 @@
             {{ option.fullName }}
           </mat-option>
         </mat-autocomplete>
-        <mat-icon class="new-client-button" matSuffix
+        <mat-icon class="new-client-button" matSuffix id="newClientButton"
             [routerLink]="['/clients/new']"
             [queryParams]="{ redirectTo: '/appointments/new'}">
           add
         </mat-icon>
       </mat-form-field>
       <mat-form-field class="full-width" (click)="picker.open()">
-        <input matInput [min]="minDate" [matDatepicker]="picker"
+        <input matInput [min]="minDate" [matDatepicker]="picker" id="appointmentDateInput"
             placeholder="Fecha de la cita" readonly
             formControlName="appointmentDate">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker disabled="false" touchUi #picker></mat-datepicker>
       </mat-form-field>
       <mat-form-field class="full-width" (click)="pickerTime.open()">
-        <input matInput [ngxTimepicker]="pickerTime"
+        <input matInput [ngxTimepicker]="pickerTime" id="appointmentTimeInput"
             placeholder="Hora de la cita" readonly
             formControlName="appointmentTime">
         <ngx-material-timepicker #pickerTime></ngx-material-timepicker>
@@ -42,6 +42,7 @@
   <mat-card-actions class="card-actions">
     <span class="fill-remaining-space"></span>
     <button mat-fab [routerLink]="['/appointments']" color="warn"><mat-icon>keyboard_arrow_left</mat-icon></button>
-    <button mat-fab [disabled]="!appointmentForm.valid" (click)="save()" color="primary"><mat-icon>save</mat-icon></button>
+    <button mat-fab (click)="save()" color="primary" id="saveAppointmentButton"
+        [disabled]="!appointmentForm.valid"><mat-icon>save</mat-icon></button>
   </mat-card-actions>
 </mat-card>

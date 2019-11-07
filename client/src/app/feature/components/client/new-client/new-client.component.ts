@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ClientService } from 'src/app/core/services/client/client.service';
-import { Client } from 'src/app/core/models/client/client';
 import { MatSnackBar } from '@angular/material';
+import { Client } from 'src/app/core/models/client';
 
 @Component({
   selector: 'app-new-client',
