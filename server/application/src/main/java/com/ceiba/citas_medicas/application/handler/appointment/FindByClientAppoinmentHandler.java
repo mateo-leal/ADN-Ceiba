@@ -4,7 +4,7 @@ import com.ceiba.citas_medicas.application.command.AppointmentCommand;
 import com.ceiba.citas_medicas.application.command.ClientCommand;
 import com.ceiba.citas_medicas.application.command.factory.AppointmentFactory;
 import com.ceiba.citas_medicas.application.command.factory.ClientFactory;
-import com.ceiba.citas_medicas.domain.service.appointment.FindByClientAppoinmentService;
+import com.ceiba.citas_medicas.domain.service.appointment.FindByClientAppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,15 +14,15 @@ import java.util.stream.Collectors;
 @Component
 public class FindByClientAppoinmentHandler {
 
-    private final FindByClientAppoinmentService findByClientAppoinmentService;
+    private final FindByClientAppointmentService findByClientAppointmentService;
 
     @Autowired
-    public FindByClientAppoinmentHandler(FindByClientAppoinmentService findByClientAppoinmentService) {
-        this.findByClientAppoinmentService = findByClientAppoinmentService;
+    public FindByClientAppoinmentHandler(FindByClientAppointmentService findByClientAppointmentService) {
+        this.findByClientAppointmentService = findByClientAppointmentService;
     }
 
     public List<AppointmentCommand> execute(ClientCommand clientCommand) {
-        return findByClientAppoinmentService.execute(ClientFactory.toModel(clientCommand)).stream()
+        return findByClientAppointmentService.execute(ClientFactory.toModel(clientCommand)).stream()
                 .map(AppointmentFactory::toCommand)
                 .collect(Collectors.toList());
     }

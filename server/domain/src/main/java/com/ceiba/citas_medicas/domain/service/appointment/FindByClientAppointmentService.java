@@ -6,11 +6,11 @@ import com.ceiba.citas_medicas.domain.persistence.AppointmentPersistence;
 
 import java.util.List;
 
-public class FindByClientAppoinmentService {
+public class FindByClientAppointmentService {
 
     private final AppointmentPersistence appointmentPersistence;
 
-    public FindByClientAppoinmentService(AppointmentPersistence appointmentPersistence) {
+    public FindByClientAppointmentService(AppointmentPersistence appointmentPersistence) {
         this.appointmentPersistence = appointmentPersistence;
     }
 

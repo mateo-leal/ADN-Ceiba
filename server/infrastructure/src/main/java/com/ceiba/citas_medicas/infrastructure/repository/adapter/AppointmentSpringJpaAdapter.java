@@ -55,12 +55,6 @@ public class AppointmentSpringJpaAdapter implements AppointmentPersistence {
     }
 
     public List<Appointment> findByClient(Client client) {
-//        return clientRepository.findByDocumentNumber(client.getDocumentNumber())
-//                .map(repository::findByClient)
-//                .map(List::stream)
-//                .map(appointmentEntityStream -> appointmentEntityStream.map(AppointmentFactory::toModel))
-//                .map(appointmentStream -> appointmentStream.collect(Collectors.toList()))
-//                .orElseGet(Collections::emptyList);
         return clientRepository.findByDocumentNumber(client.getDocumentNumber())
                 .map(repository::findByClient)
                 .orElseGet(Collections::emptyList).stream()

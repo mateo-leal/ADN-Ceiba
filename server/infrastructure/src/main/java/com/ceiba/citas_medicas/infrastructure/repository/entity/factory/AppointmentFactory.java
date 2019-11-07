@@ -17,6 +17,7 @@ public final class AppointmentFactory {
                 .id(appointment.getId())
                 .appointmentDate(appointment.getAppointmentDate())
                 .createdAt(appointment.getCreatedAt())
+                .price(appointment.getPrice())
                 .client(ClientFactory.toEntity(appointment.getClient()))
                 .build();
     }

@@ -3,7 +3,7 @@ package com.ceiba.citas_medicas.domain.model;
 import java.util.Objects;
 
 import static com.ceiba.citas_medicas.domain.util.Message.getMessage;
-import static com.ceiba.citas_medicas.domain.validation.ArgumentUtils.requireNonBlank;
+import static com.ceiba.citas_medicas.domain.validation.Validators.requireNonBlank;
 
 /**
  * A {@link Client} domain object.

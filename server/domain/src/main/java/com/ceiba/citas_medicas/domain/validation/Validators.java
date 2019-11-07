@@ -5,9 +5,9 @@ import org.apache.commons.lang3.StringUtils;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 
-public final class ArgumentUtils {
+public final class Validators {
 
-    private ArgumentUtils() { }
+    private Validators() { }
 
     /**
      * Throws an exception if the arguments is null or whitespace only.
@@ -30,7 +30,7 @@ public final class ArgumentUtils {
     }
 
     public static void requireNotWeekend(LocalDateTime date, String message) {
-        if (date.getDayOfWeek() == DayOfWeek.SATURDAY || date.getDayOfWeek() == DayOfWeek.SUNDAY) {
+        if (isWeekend(date)) {
             throw new IllegalArgumentException(message);
         }
     }
@@ -39,5 +39,9 @@ public final class ArgumentUtils {
         if (date1.toLocalDate().isEqual(date2.toLocalDate())) {
             throw new IllegalArgumentException(message);
         }
+    }
+
+    public static boolean isWeekend(LocalDateTime date) {
+        return date.getDayOfWeek() == DayOfWeek.SATURDAY || date.getDayOfWeek() == DayOfWeek.SUNDAY;
     }
 }

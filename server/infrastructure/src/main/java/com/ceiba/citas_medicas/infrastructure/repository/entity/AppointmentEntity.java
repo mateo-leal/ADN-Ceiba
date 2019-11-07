@@ -23,5 +23,6 @@ public class AppointmentEntity {
     @Id @Column @GeneratedValue private Long id;
     @Column private LocalDateTime createdAt;
     @Column private LocalDateTime appointmentDate;
+    @Column private Double price;
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }) private ClientEntity client;
 }

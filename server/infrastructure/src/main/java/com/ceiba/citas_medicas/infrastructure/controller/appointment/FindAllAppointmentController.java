@@ -8,19 +8,16 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-import static com.ceiba.citas_medicas.infrastructure.config.Constants.FRONT_END_URL;
 import static org.springframework.http.HttpStatus.OK;
 
 @RestController
 @RequestMapping("/appointments")
-@CrossOrigin(origins = FRONT_END_URL)
 @Api(value = "Appointments", tags = { "appointments" })
 public class FindAllAppointmentController {
 

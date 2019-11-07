@@ -18,6 +18,6 @@ public final class AppointmentFactory {
     public static AppointmentCommand toCommand(Appointment appointment) {
         var clientCommand = ClientFactory.toCommand(appointment.getClient());
         return new AppointmentCommand(appointment.getId(), appointment.getAppointmentDate(),
-                appointment.getCreatedAt(), clientCommand);
+                appointment.getCreatedAt(), appointment.getPrice(), clientCommand);
     }
 }

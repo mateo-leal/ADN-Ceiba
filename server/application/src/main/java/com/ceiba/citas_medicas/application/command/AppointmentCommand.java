@@ -26,6 +26,8 @@ public class AppointmentCommand implements Serializable {
     private LocalDateTime appointmentDate;
     @JsonProperty("createdAt")
     private LocalDateTime createdAt;
+    @JsonProperty("price")
+    private Double price;
     @JsonProperty("client")
     @Valid
     private ClientCommand client;

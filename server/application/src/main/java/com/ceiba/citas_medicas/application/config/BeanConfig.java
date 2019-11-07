@@ -35,8 +35,8 @@ public class BeanConfig {
     }
 
     @Bean
-    public FindByClientAppoinmentService getFindByClientAppoinmentService(AppointmentPersistence appointmentPersistence) {
-        return new FindByClientAppoinmentService(appointmentPersistence);
+    public FindByClientAppointmentService getFindByClientAppoinmentService(AppointmentPersistence appointmentPersistence) {
+        return new FindByClientAppointmentService(appointmentPersistence);
     }
 
     @Bean

@@ -45,7 +45,7 @@ class AppointmentTest {
     }
 
     @Test
-    void instance_when_fechaCreacion_greater() {
+    void instance_when_createdAt_greater() {
         // arrange
         var today = LocalDateTime.of(2019, Month.OCTOBER, 29, 12, 0);
         var persona = new Client("123", "John Doe");
@@ -65,6 +65,36 @@ class AppointmentTest {
 
         // assert
         assertNotNull(cita);
+    }
+
+    @Test
+    void price_when_weekend() {
+        // arrange
+        final var expectedPrice = 40000;
+        var today = LocalDateTime.of(2019, Month.OCTOBER, 29, 12, 0);
+        var weekend = LocalDateTime.of(2019, Month.NOVEMBER, 2, 12, 0);
+        var persona = new Client("123", "John Doe");
+
+        // act
+        var cita = new Appointment(today, weekend, persona);
+
+        // assert
+        assertEquals(expectedPrice, cita.getPrice());
+    }
+
+    @Test
+    void price_when_not_weekend() {
+        // arrange
+        final var expectedPrice = 20000;
+        var today = LocalDateTime.of(2019, Month.OCTOBER, 29, 12, 0);
+        var notWeekend = LocalDateTime.of(2019, Month.NOVEMBER, 1, 12, 0);
+        var persona = new Client("123", "John Doe");
+
+        // act
+        var cita = new Appointment(today, notWeekend, persona);
+
+        // assert
+        assertEquals(expectedPrice, cita.getPrice());
     }
 
     @Test

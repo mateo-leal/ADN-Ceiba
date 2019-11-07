@@ -49,8 +49,10 @@ class ClientTest {
     void equals() {
         // arrange
         var client = new Client(1L, "123", "John Doe");
+        var client2 = new Client(1L, "123", "John Doe");
         // act - assert
         assertFalse(client.equals("not the same class"));
+        assertTrue(client.equals(client2));
     }
 
     @Test

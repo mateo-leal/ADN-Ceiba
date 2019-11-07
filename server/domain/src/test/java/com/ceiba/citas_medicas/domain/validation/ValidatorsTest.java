@@ -7,7 +7,7 @@ import java.time.Month;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ArgumentUtilsTest {
+class ValidatorsTest {
 
     @Test
     void requireNotWeekend_when_day_is_not_weekend() {
@@ -15,7 +15,7 @@ class ArgumentUtilsTest {
         var notWeekendDay = LocalDateTime.of(2019, Month.OCTOBER, 25, 12, 0);
 
         // act - assert
-        assertDoesNotThrow(() -> ArgumentUtils.requireNotWeekend(notWeekendDay, ""));
+        assertDoesNotThrow(() -> Validators.requireNotWeekend(notWeekendDay, ""));
     }
 
     @Test
@@ -24,7 +24,7 @@ class ArgumentUtilsTest {
         var saturday = LocalDateTime.of(2019, Month.OCTOBER, 26, 12, 0);
 
         // act - assert
-        assertThrows(IllegalArgumentException.class, () -> ArgumentUtils.requireNotWeekend(saturday, ""));
+        assertThrows(IllegalArgumentException.class, () -> Validators.requireNotWeekend(saturday, ""));
     }
 
     @Test
@@ -33,6 +33,6 @@ class ArgumentUtilsTest {
         var sunday = LocalDateTime.of(2019, Month.OCTOBER, 27, 12, 0);
 
         // act - assert
-        assertThrows(IllegalArgumentException.class, () -> ArgumentUtils.requireNotWeekend(sunday, ""));
+        assertThrows(IllegalArgumentException.class, () -> Validators.requireNotWeekend(sunday, ""));
     }
 }
