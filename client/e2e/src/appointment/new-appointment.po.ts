@@ -5,16 +5,24 @@ export class NewAppointmentPage {
     return browser.get(`${browser.baseUrl}/appointments`) as Promise<any>;
   }
 
-  setDocumentNumber(text: string) {
-    return element(by.id('documentNumberInput')).sendKeys(text);
+  setClient(text: string) {
+    return element(by.id('clientInput')).sendKeys(text);
   }
 
-  setFullName(text: string) {
-    return element(by.id('fullNameInput')).sendKeys(text);
+  setAppointmentDate(text: string) {
+    return element(by.id('appointmentDateInput')).sendKeys(text);
+  }
+
+  setAppointmentTime(text: string) {
+    return element(by.id('appointmentTimeInput')).sendKeys(text);
+  }
+
+  clickNewClientButton() {
+    return element(by.id('newClientButton')).click();
   }
 
   clickSave() {
-    return element(by.id('saveClientButton')).click();
+    return element(by.id('saveAppointmentButton')).click();
   }
 
   snackbarExists() {
