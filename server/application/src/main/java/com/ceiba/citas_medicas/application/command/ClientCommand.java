@@ -7,7 +7,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 @Getter
@@ -21,10 +20,8 @@ public class ClientCommand implements Serializable {
 
     @JsonProperty("id")
     private Long id;
-    @NotBlank
     @JsonProperty("documentNumber")
     private String documentNumber;
-    @NotBlank
     @JsonProperty("fullName")
     private String fullName;
 
