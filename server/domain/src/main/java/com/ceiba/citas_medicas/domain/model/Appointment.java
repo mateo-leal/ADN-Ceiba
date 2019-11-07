@@ -52,7 +52,7 @@ public class Appointment {
         this.appointmentDate = requireNonNull(appointmentDate, getMessage("obligatorio.fecha_cita"));
         requireDifferentDay(appointmentDate, createdAt, getMessage("obligatorio.fecha_creacion_igual_cita"));
         requireDateGreater(createdAt, appointmentDate, getMessage("obligatorio.fecha_cita_mayor_creacion"));
-        this.price = isWeekend(appointmentDate) ? APPOINTMENT_PRICE * 2 : APPOINTMENT_PRICE;
+        this.price = isWeekend(appointmentDate) ? (APPOINTMENT_PRICE * 2) : APPOINTMENT_PRICE;
     }
     public double getPrice() {
         return price;
