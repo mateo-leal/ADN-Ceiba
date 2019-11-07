@@ -10,24 +10,26 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@RequiredArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AppointmentCommand implements Serializable {
 
     private static final long serialVersionUID = 7485296643459028611L;
 
-    @NonNull
     @JsonProperty("id")
     private Long id;
-    @NonNull
     @JsonProperty("appointmentDate")
     private LocalDateTime appointmentDate;
-    @NonNull
     @JsonProperty("createdAt")
     private LocalDateTime createdAt;
     @JsonProperty("price")
     private Double price;
-    @NonNull
     @JsonProperty("client")
     private ClientCommand client;
+
+    public AppointmentCommand(Long id, LocalDateTime appointmentDate, LocalDateTime createdAt, ClientCommand client) {
+        this.id = id;
+        this.appointmentDate = appointmentDate;
+        this.createdAt = createdAt;
+        this.client = client;
+    }
 }
