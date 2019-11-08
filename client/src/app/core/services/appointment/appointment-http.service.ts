@@ -4,7 +4,7 @@ import { Appointment } from '../../models/appointment';
 import { environment } from '../../../../environments/environment';
 
 @Injectable()
-export class AppointmentService {
+export class AppointmentHttpService {
 
 
   api = `${environment.api}/appointments`;

@@ -1,0 +1,41 @@
+<table mat-table #table [dataSource]="appointments | async" class="appointments-table">
+  <caption i18n="Registered appointments@@appointmentsTableDescription">Citas registradas</caption>
+  <!-- Client column -->
+  <ng-container matColumnDef="client">
+    <th id="client" mat-header-cell *matHeaderCellDef i18n="Client@@client">Cliente</th>
+    <td mat-cell *matCellDef="let appointment">{{ appointment.client.fullName }}</td>
+  </ng-container>
+  <!-- Appointment date -->
+  <ng-container matColumnDef="appointmentDate">
+    <th id="appointmentDate" mat-header-cell *matHeaderCellDef i18n="Appointment date@@appointmentDate">
+      Fecha de la cita
+    </th>
+    <td mat-cell *matCellDef="let appointment">{{ appointment.appointmentDate | date : 'medium' }}</td>
+  </ng-container>
+  <!-- Created at date -->
+  <ng-container matColumnDef="createdAt">
+    <th id="createdAt" mat-header-cell *matHeaderCellDef i18n="Created at@@createdAt">
+      Fecha de registro
+    </th>
+    <td mat-cell *matCellDef="let appointment">{{ appointment.createdAt | date : 'medium' }}</td>
+  </ng-container>
+  <!-- Price -->
+  <ng-container matColumnDef="price">
+    <th id="price" mat-header-cell *matHeaderCellDef i18n="Price@@price">Precio</th>
+    <td mat-cell *matCellDef="let appointment">
+      {{ appointment.price | currency : 'COP' : 'symbol-narrow' : '4.2-2' }}
+    </td>
+  </ng-container>
+  <!-- Actions -->
+  <ng-container matColumnDef="actions">
+    <th id="createdAt" mat-header-cell *matHeaderCellDef i18n="Actions@@actions">Acciones</th>
+    <td mat-cell *matCellDef="let appointment">
+      <button mat-icon-button color="warn" (click)="emitDelete(appointment)"
+          matTooltip="Eliminar" i18n-matTooltip="Delete@@delete">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

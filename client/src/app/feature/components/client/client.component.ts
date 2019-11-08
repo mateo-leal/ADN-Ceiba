@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ClientService } from 'src/app/core/services/client/client.service';
+import { ClientHttpService } from 'src/app/core/services/client/client-http.service';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { ConfirmDeleteDialogComponent } from 'src/app/shared/components/confirm-delete-dialog/confirm-delete-dialog.component';
 import { Observable } from 'rxjs';
-import { AppointmentService } from 'src/app/core/services/appointment/appointment.service';
+import { AppointmentHttpService } from 'src/app/core/services/appointment/appointment-http.service';
 import { Client } from 'src/app/core/models/client';
 
 @Component({
@@ -16,8 +16,8 @@ export class ClientComponent implements OnInit {
   clients: Client[];
   displayedColumns: string[] = ['name', 'documentNumber', 'actions'];
 
-  constructor(private appointmentService: AppointmentService,
-              private clientService: ClientService,
+  constructor(private appointmentService: AppointmentHttpService,
+              private clientService: ClientHttpService,
               private dialog: MatDialog,
               private snackbar: MatSnackBar) { }
 

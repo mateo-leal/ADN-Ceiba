@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="appTitle" datatype="html">
+        <source>CITAS MÉDICAS</source>
+        <target>MEDICAL APPOINTMENTS</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/header/header.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <note priority="1" from="description">App title</note>
+        <note priority="1" from="meaning">App title</note>
+      </trans-unit>
+      <trans-unit id="confirmDelete" datatype="html">
+        <source>Confirmar eliminación</source>
+        <target>Confirm delete</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/confirm-delete-dialog/confirm-delete-dialog.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <note priority="1" from="description">Confirm delete</note>
+      </trans-unit>
+      <trans-unit id="yes" datatype="html">
+        <source>Sí</source>
+        <target>Yes</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/confirm-delete-dialog/confirm-delete-dialog.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description">Yes</note>
+      </trans-unit>
+      <trans-unit id="appointments" datatype="html">
+        <source>Citas</source>
+        <target>Appointments</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/navigation/navigation.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/appointment/appointment.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <note priority="1" from="description">Appointments</note>
+      </trans-unit>
+      <trans-unit id="clients" datatype="html">
+        <source>Clientes</source>
+        <target>Clients</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/navigation/navigation.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/client/client.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <note priority="1" from="description">Clients</note>
+      </trans-unit>
+      <trans-unit id="appointmentsCardDescription" datatype="html">
+        <source>Visualiza las citas registradas</source>
+        <target>View registered appointments</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/appointment/appointment.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description">Appointments description</note>
+      </trans-unit>
+      <trans-unit id="newAppointment" datatype="html">
+        <source>Nueva cita</source>
+        <target>New appointment</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/appointment/appointment.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <note priority="1" from="description">New appointment</note>
+      </trans-unit>
+      <trans-unit id="appointmentsTableDescription" datatype="html">
+        <source>Citas registradas</source>
+        <target>Registered appointments</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/appointment/appointment.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <note priority="1" from="description">Registered appointments</note>
+      </trans-unit>
+      <trans-unit id="client" datatype="html">
+        <source>Cliente</source>
+        <target>Client</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/appointment/appointment.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/appointment/new-appointment/new-appointment.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/client/client.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+        <note priority="1" from="description">Client</note>
+      </trans-unit>
+      <trans-unit id="appointmentDate" datatype="html">
+        <source>Fecha de la cita</source>
+        <target>Appointment date</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/appointment/appointment.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/appointment/new-appointment/new-appointment.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+        <note priority="1" from="description">Appointment date</note>
+      </trans-unit>
+      <trans-unit id="createdAt" datatype="html">
+        <source>Fecha de registro</source>
+        <target>Created at</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/appointment/appointment.component.html</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/appointment/new-appointment/new-appointment.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+        <note priority="1" from="description">Created at</note>
+      </trans-unit>
+      <trans-unit id="time" datatype="html">
+        <source>Hora de la cita</source>
+        <target>Time</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/appointment/new-appointment/new-appointment.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+        <note priority="1" from="description">Time</note>
+      </trans-unit>
+      <trans-unit id="price" datatype="html">
+        <source>Precio</source>
+        <target>Price</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/appointment/appointment.component.html</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+        <note priority="1" from="description">Price</note>
+      </trans-unit>
+      <trans-unit id="actions" datatype="html">
+        <source>Acciones</source>
+        <target>Actions</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/appointment/appointment.component.html</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/client/client.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+        <note priority="1" from="description">Actions</note>
+      </trans-unit>
+      <trans-unit id="delete" datatype="html">
+        <source>Eliminar</source>
+        <target>Delete</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/appointment/appointment.component.html</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/client/client.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+        <note priority="1" from="description">Delete</note>
+      </trans-unit>
+      <trans-unit id="newAppointmentCardTitle" datatype="html">
+        <source>Registrar cita</source>
+        <target>Create an appointment</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/appointment/new-appointment/new-appointment.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <note priority="1" from="description">Create an appointment</note>
+      </trans-unit>
+      <trans-unit id="7748332d7b62354546fc15859232ddd1494a33cf" datatype="html">
+        <source>Permite registrar una cita en el sistema</source>
+        <target>Allow to create an appointment</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/appointment/new-appointment/new-appointment.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description">Allow to create an appointment</note>
+      </trans-unit>
+      <trans-unit id="goBack" datatype="html">
+        <source>Volver</source>
+        <target>Go back</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/appointment/new-appointment/new-appointment.component.html</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/client/new-client/new-client.component.html</context>
+          <context context-type="linenumber">54</context>
+        </context-group>
+        <note priority="1" from="description">Go back</note>
+      </trans-unit>
+      <trans-unit id="save" datatype="html">
+        <source>Guardar</source>
+        <target>Save</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/appointment/new-appointment/new-appointment.component.html</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/client/new-client/new-client.component.html</context>
+          <context context-type="linenumber">58</context>
+        </context-group>
+        <note priority="1" from="description">Save</note>
+      </trans-unit>
+      <trans-unit id="clientsCardDescription" datatype="html">
+        <source>Visualiza los clientes registrados</source>
+        <target>View registered clients</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/client/client.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description">Clients description</note>
+      </trans-unit>
+      <trans-unit id="newClient" datatype="html">
+        <source>Nuevo cliente</source>
+        <target>New client</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/client/client.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <note priority="1" from="description">New client</note>
+      </trans-unit>
+      <trans-unit id="clientsTableDescription" datatype="html">
+        <source>Clientes registrados</source>
+        <target>Registered clients</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/client/client.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <note priority="1" from="description">Registered clients</note>
+      </trans-unit>
+      <trans-unit id="documentNumber" datatype="html">
+        <source>Número de documento</source>
+        <target>Document number</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/client/client.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/client/new-client/new-client.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <note priority="1" from="description">Document number</note>
+      </trans-unit>
+      <trans-unit id="newClientCardTitle" datatype="html">
+        <source>Registrar cliente</source>
+        <target>Create a client</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/client/new-client/new-client.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <note priority="1" from="description">Create a client</note>
+      </trans-unit>
+      <trans-unit id="newClientCardDescription" datatype="html">
+        <source>Permite registrar un cliente en el sistema</source>
+        <target>Allow to create a client</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/client/new-client/new-client.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <note priority="1" from="description">Allow to create a client</note>
+      </trans-unit>
+      <trans-unit id="documentNumberRequired" datatype="html">
+        <source>El número de documento es obligatorio</source>
+        <target>Document number is required</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/client/new-client/new-client.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <note priority="1" from="description">Document number is required</note>
+      </trans-unit>
+      <trans-unit id="documentNumber20OrMore" datatype="html">
+        <source>El número de documento debe contener 20 o menos carácteres</source>
+        <target>Document number must contain 20 characters or less</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/client/new-client/new-client.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+        <note priority="1" from="description">Document number must have 20 or more characters</note>
+      </trans-unit>
+      <trans-unit id="existingClient" datatype="html">
+        <source>Ya existe un cliente con ese número de documento</source>
+        <target>There's already a client with the document number</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/client/new-client/new-client.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+        <note priority="1" from="description">There&apos;s already a client with that document number</note>
+      </trans-unit>
+      <trans-unit id="fullName" datatype="html">
+        <source>Nombre completo</source>
+        <target>Name</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/client/new-client/new-client.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+        <note priority="1" from="description">Full name</note>
+      </trans-unit>
+      <trans-unit id="nameRequired" datatype="html">
+        <source>El nombre es obligatorio</source>
+        <target>Name is required</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/client/new-client/new-client.component.html</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+        <note priority="1" from="description">Name is required</note>
+      </trans-unit>
+      <trans-unit id="name30OrMore" datatype="html">
+        <source>El nombre debe contener 30 o menos carácteres</source>
+        <target>Name must contain 30 characters or less</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/client/new-client/new-client.component.html</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+        <note priority="1" from="description">Name must have 30 or more characters</note>
+      </trans-unit>
+      <trans-unit id="nameOnlyLetters" datatype="html">
+        <source>El nombre solo puede contener letras</source>
+        <target>Name is invalid</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/components/client/new-client/new-client.component.html</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+        <note priority="1" from="description">Name can only have letters</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

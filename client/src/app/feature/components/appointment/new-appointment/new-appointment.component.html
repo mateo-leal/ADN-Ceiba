@@ -1,14 +1,14 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>Registrar cita</mat-card-title>
-    <mat-card-subtitle>Permite registrar una cita en el sistema</mat-card-subtitle>
+    <mat-card-title i18n="Create an appointment@@newAppointmentCardTitle">Registrar cita</mat-card-title>
+    <mat-card-subtitle i18n="Allow to create an appointment@@">Permite registrar una cita en el sistema</mat-card-subtitle>
   </mat-card-header>
   <hr>
   <mat-card-content>
     <form [formGroup]="appointmentForm" (ngSubmit)="save()" class="appointment-form">
       <mat-form-field class="full-width">
         <input type="text" placeholder="Cliente" aria-label="Cliente" id="clientInput"
-            matInput [matAutocomplete]="auto"
+            matInput [matAutocomplete]="auto" i18n-placeholder="Client@@client"
             formControlName="client">
         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
           <mat-option *ngFor="let option of filteredOptions | async" [value]="option.fullName">
@@ -23,14 +23,14 @@
       </mat-form-field>
       <mat-form-field class="full-width" (click)="picker.open()">
         <input matInput [min]="minDate" [matDatepicker]="picker" id="appointmentDateInput"
-            placeholder="Fecha de la cita" readonly
+            placeholder="Fecha de la cita" readonly i18n-placeholder="Appointment date@@appointmentDate"
             formControlName="appointmentDate">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker disabled="false" touchUi #picker></mat-datepicker>
       </mat-form-field>
       <mat-form-field class="full-width" (click)="pickerTime.open()">
         <input matInput [ngxTimepicker]="pickerTime" id="appointmentTimeInput"
-            placeholder="Hora de la cita" readonly
+            placeholder="Hora de la cita" readonly i18n-placeholder="Time@@time"
             formControlName="appointmentTime">
         <ngx-material-timepicker #pickerTime></ngx-material-timepicker>
         <mat-icon class="new-client-button" matSuffix>
@@ -41,8 +41,12 @@
   </mat-card-content>
   <mat-card-actions class="card-actions">
     <span class="fill-remaining-space"></span>
-    <button mat-fab [routerLink]="['/appointments']" color="warn"><mat-icon>keyboard_arrow_left</mat-icon></button>
+    <button mat-fab [routerLink]="['/appointments']" color="warn" matTooltip="Volver" i18n-matTooltip="Go back@@goBack">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
     <button mat-fab (click)="save()" color="primary" id="saveAppointmentButton"
-        [disabled]="!appointmentForm.valid"><mat-icon>save</mat-icon></button>
+        [disabled]="!appointmentForm.valid" matTooltip="Guardar" i18n-matTooltip="Save@@save">
+      <mat-icon>save</mat-icon>
+    </button>
   </mat-card-actions>
 </mat-card>

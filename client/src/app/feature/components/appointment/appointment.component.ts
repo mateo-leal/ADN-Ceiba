@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Appointment } from 'src/app/core/models/appointment';
-import { AppointmentService } from 'src/app/core/services/appointment/appointment.service';
-import { ConfirmDeleteDialogComponent } from '../../../shared/components/confirm-delete-dialog/confirm-delete-dialog.component';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { Observable } from 'rxjs';
+
+import { Appointment } from 'src/app/core/models/appointment';
+import { AppointmentService } from './appointment.service';
+import { ConfirmDeleteDialogComponent } from '../../../shared/components/confirm-delete-dialog/confirm-delete-dialog.component';
 
 @Component({
   selector: 'app-appointment',
@@ -12,42 +13,42 @@ import { Observable } from 'rxjs';
 })
 export class AppointmentComponent implements OnInit {
 
-  appointments: Appointment[];
-  displayedColumns: string[] = ['client', 'appointmentDate', 'createdAt', 'price', 'actions'];
+  appointments: Observable<Appointment[]>;
 
   constructor(private appointmentService: AppointmentService,
               private dialog: MatDialog,
               private snackbar: MatSnackBar) { }
 
-  ngOnInit() {
-    this._findAllAppointments();
-  }
+  ngOnInit() { this._findAllAppointments(); }
 
-  delete(appointment: Appointment) {
+  onDelete(appointment: Appointment) {
     this._confirmElimination(
       `¿Estás seguro que deseas eliminar la cita de ${appointment.client.fullName}?`)
       .subscribe(confirm => {
         if (confirm) {
-          this.appointmentService.delete(appointment.id).subscribe(() => {
-            this.snackbar.open('Se eliminó la cita correctamente', 'Cerrar', {
-              duration: 5000,
-            });
-            this._findAllAppointments();
-          });
+          this.appointmentService.delete(appointment)
+            .then(() => this._throwMessage('Se eliminó la cita correctamente'))
+            .then(() => this._findAllAppointments())
+            .catch(() => this._throwMessage('Error eliminando la cita'));
         }
       });
   }
 
-  _findAllAppointments() {
-    this.appointmentService.findAll()
-      .subscribe(appointments => this.appointments = appointments);
+  private _findAllAppointments(): void {
+    this.appointments = this.appointmentService.findAll();
   }
 
-  _confirmElimination(text: string): Observable<boolean> {
+  private _confirmElimination(text: string): Observable<boolean> {
     const dialogRef = this.dialog.open(ConfirmDeleteDialogComponent, {
       width: '450px',
       data: text
     });
     return dialogRef.afterClosed();
+  }
+
+  private _throwMessage(message: string): void {
+    this.snackbar.open(message, 'Cerrar', {
+      duration: 5000,
+    });
   }
 }

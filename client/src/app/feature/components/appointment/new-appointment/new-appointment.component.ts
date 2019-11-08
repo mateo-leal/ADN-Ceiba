@@ -4,10 +4,10 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
 import { ActivatedRoute, Router } from '@angular/router';
-import { ClientService } from 'src/app/core/services/client/client.service';
+import { ClientHttpService } from 'src/app/core/services/client/client-http.service';
 import { Appointment } from 'src/app/core/models/appointment';
 import { DateUtils } from 'src/app/shared/utils/date-utils';
-import { AppointmentService } from 'src/app/core/services/appointment/appointment.service';
+import { AppointmentHttpService } from 'src/app/core/services/appointment/appointment-http.service';
 import { MatSnackBar } from '@angular/material';
 import { Client } from 'src/app/core/models/client';
 
@@ -24,8 +24,8 @@ export class NewAppointmentComponent implements OnInit {
   filteredOptions: Observable<Client[]>;
 
   constructor(private router: Router, private route: ActivatedRoute,
-              private appointmentService: AppointmentService,
-              private clientService: ClientService,
+              private appointmentService: AppointmentHttpService,
+              private clientService: ClientHttpService,
               private formBuilder: FormBuilder,
               private snackbar: MatSnackBar) {
     this.minDate = new Date();
@@ -45,8 +45,6 @@ export class NewAppointmentComponent implements OnInit {
     appointment.client = client;
     appointment.appointmentDate = new Date(this.appointmentForm.value.appointmentDate);
     const [horas, minutos] = DateUtils.convert12hto24h(this.appointmentForm.value.appointmentTime);
-    console.log(horas);
-    console.log(minutos);
     appointment.appointmentDate.setHours(horas - 5, minutos, 0);
     this.appointmentService.create(appointment).subscribe(() => {
       this.snackbar.open('La cita se registró correctamente', 'Cerrar', {

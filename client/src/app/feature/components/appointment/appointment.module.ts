@@ -6,6 +6,8 @@ import { AppointmentRoutingModule } from './appointment-routing.module';
 import { NewAppointmentComponent } from './new-appointment/new-appointment.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AppointmentService } from './appointment.service';
+import { AppointmentListComponent } from './appointment-list/appointment-list.component';
 
 @NgModule({
   imports: [
@@ -15,8 +17,8 @@ import { CommonModule } from '@angular/common';
     ReactiveFormsModule,
     SharedModule
   ],
-  declarations: [AppointmentComponent, NewAppointmentComponent],
-  providers: [],
+  declarations: [AppointmentComponent, NewAppointmentComponent, AppointmentListComponent],
+  providers: [ AppointmentService ],
   exports: [],
 })
 export class AppointmentModule { }

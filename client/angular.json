@@ -62,6 +62,14 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "en": {
+              "aot": true,
+              "outputPath": "dist/citas-medicas-en",
+              "i18nFile": "src/locale/messages.en.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "en",
+              "i18nMissingTranslation": "error"
             }
           }
         },
@@ -74,6 +82,9 @@
           "configurations": {
             "production": {
               "browserTarget": "citas-medicas:build:production"
+            },
+            "en": {
+              "browserTarget": "citas-medicas:build:en"
             }
           }
         },

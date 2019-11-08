@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ClientService } from 'src/app/core/services/client/client.service';
+import { ClientHttpService } from 'src/app/core/services/client/client-http.service';
 import { MatSnackBar } from '@angular/material';
 import { Client } from 'src/app/core/models/client';
 
@@ -16,7 +16,7 @@ export class NewClientComponent implements OnInit {
   clientExists: boolean;
 
   constructor(private router: Router, private route: ActivatedRoute,
-              private clientService: ClientService,
+              private clientService: ClientHttpService,
               private formBuilder: FormBuilder,
               private snackbar: MatSnackBar) { }
 

@@ -1,31 +1,40 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>Clientes</mat-card-title>
-    <mat-card-subtitle>Visualiza los clientes registrados</mat-card-subtitle>
+    <mat-card-title i18n="Clients@@clients">Clientes</mat-card-title>
+    <mat-card-subtitle i18n="Clients description@@clientsCardDescription">
+      Visualiza los clientes registrados
+    </mat-card-subtitle>
     <span class="fill-remaining-space"></span>
     <mat-card-actions class="add-button">
-      <button id="new-client-button" mat-fab [routerLink]="['new']"matTooltip="Nueva cita"><mat-icon>add</mat-icon></button>
+      <button id="new-client-button" mat-fab [routerLink]="['new']" matTooltip="Nuevo cliente"
+          i18n-matTooltip="New client@@newClient">
+        <mat-icon>add</mat-icon>
+      </button>
     </mat-card-actions>
   </mat-card-header>
   <mat-card-content>
     <table mat-table #table [dataSource]="clients" class="clients-table">
-      <caption>Clientes registrados</caption>
+      <caption i18n="Registered clients@@clientsTableDescription">Clientes registrados</caption>
       <!-- Name column -->
       <ng-container matColumnDef="name">
-        <th id="name" mat-header-cell *matHeaderCellDef>Cliente</th>
+        <th id="name" mat-header-cell *matHeaderCellDef i18n="Client@@client">Cliente</th>
         <td mat-cell *matCellDef="let client">{{ client.fullName }}</td>
       </ng-container>
       <!-- Document number column -->
       <ng-container matColumnDef="documentNumber">
-        <th id="documentNumber" mat-header-cell *matHeaderCellDef>Fecha de la cita</th>
+        <th id="documentNumber" mat-header-cell *matHeaderCellDef i18n="Document number@@documentNumber">
+          Número de documento
+        </th>
         <td mat-cell *matCellDef="let client">{{ client.documentNumber }}</td>
       </ng-container>
       <!-- Actions -->
       <ng-container matColumnDef="actions">
-        <th id="createdAt" mat-header-cell *matHeaderCellDef> Acciones </th>
+        <th id="createdAt" mat-header-cell *matHeaderCellDef i18n="Actions@@actions">Acciones</th>
         <td mat-cell *matCellDef="let client">
           <button mat-icon-button color="warn" (click)="delete(client)"
-              matTooltip="Eliminar"><mat-icon>delete</mat-icon></button>
+              matTooltip="Eliminar" i18n-matTooltip="Delete@@delete">
+            <mat-icon>delete</mat-icon>
+          </button>
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

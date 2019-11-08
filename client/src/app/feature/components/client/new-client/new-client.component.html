@@ -1,7 +1,11 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title id ="new-client-header">Registrar cliente</mat-card-title>
-    <mat-card-subtitle>Permite registrar un cliente en el sistema</mat-card-subtitle>
+    <mat-card-title id ="new-client-header" i18n="Create a client@@newClientCardTitle">
+      Registrar cliente
+    </mat-card-title>
+    <mat-card-subtitle i18n="Allow to create a client@@newClientCardDescription">
+      Permite registrar un cliente en el sistema
+    </mat-card-subtitle>
   </mat-card-header>
   <hr>
   <mat-card-content>
@@ -9,33 +13,37 @@
       <!-- documentNumber -->
       <mat-form-field class="full-width">
         <input matInput placeholder="Número de documento" id="documentNumberInput"
-            formControlName="documentNumber">
+            formControlName="documentNumber" i18n-placeholder="Document number@@documentNumber">
       </mat-form-field>
       <div class="errors" *ngIf="clientForm.get('documentNumber').dirty">
-          {{ clientForm.get('documentNumber').getError() }}
-        <div *ngIf="clientForm.get('documentNumber').hasError('required')" class="alert">
+        <div *ngIf="clientForm.get('documentNumber').hasError('required')" class="alert"
+            i18n="Document number is required@@documentNumberRequired">
           El número de documento es obligatorio
         </div>
-        <div *ngIf="clientForm.get('documentNumber').hasError('maxlength')" class="alert">
+        <div *ngIf="clientForm.get('documentNumber').hasError('maxlength')" class="alert"
+            i18n="Document number must have 20 or more characters@@documentNumber20OrMore">
           El número de documento debe contener 20 o menos carácteres
         </div>
       </div>
-      <mat-error *ngIf="clientExists" >
+      <mat-error *ngIf="clientExists" i18n="There's already a client with that document number@@existingClient">
         Ya existe un cliente con ese número de documento
       </mat-error>
       <!-- fullName -->
       <mat-form-field class="full-width">
         <input matInput placeholder="Nombre completo" id="fullNameInput"
-            formControlName="fullName">
+            formControlName="fullName" i18n-placeholder="Full name@@fullName">
       </mat-form-field>
       <div *ngIf="!clientForm.get('fullName').pristine">
-        <mat-error *ngIf="clientForm.get('fullName').hasError('required')" >
+        <mat-error *ngIf="clientForm.get('fullName').hasError('required')"
+            i18n="Name is required@@nameRequired">
           El nombre es obligatorio
         </mat-error>
-        <mat-error *ngIf="clientForm.get('fullName').hasError('maxlength')" >
+        <mat-error *ngIf="clientForm.get('fullName').hasError('maxlength')"
+            i18n="Name must have 30 or more characters@@name30OrMore">
           El nombre debe contener 30 o menos carácteres
         </mat-error>
-        <mat-error *ngIf="clientForm.get('fullName').hasError('pattern')" >
+        <mat-error *ngIf="clientForm.get('fullName').hasError('pattern')"
+            i18n="Name can only have letters@@nameOnlyLetters">
           El nombre solo puede contener letras
         </mat-error>
       </div>
@@ -43,8 +51,12 @@
   </mat-card-content>
   <mat-card-actions class="card-actions">
     <span class="fill-remaining-space"></span>
-    <button mat-fab (click)="goBack()" color="warn"><mat-icon>keyboard_arrow_left</mat-icon></button>
+    <button mat-fab (click)="goBack()" color="warn" matTooltip="Volver" i18n-matTooltip="Go back@@goBack">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
     <button mat-fab (click)="save()" color="primary" id="saveClientButton"
-        [disabled]="!clientForm.valid || clientExists"><mat-icon>save</mat-icon></button>
+        [disabled]="!clientForm.valid || clientExists" matTooltip="Guardar" i18n-matTooltip="Save@@save">
+      <mat-icon>save</mat-icon>
+    </button>
   </mat-card-actions>
 </mat-card>

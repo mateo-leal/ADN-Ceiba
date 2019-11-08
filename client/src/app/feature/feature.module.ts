@@ -14,6 +14,6 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule,
     CommonModule
   ],
-  exports: [ FeatureModule ]
+  exports: [ ]
 })
 export class FeatureModule { }
