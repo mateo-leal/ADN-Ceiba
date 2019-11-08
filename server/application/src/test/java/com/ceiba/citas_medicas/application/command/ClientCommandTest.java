@@ -21,4 +21,11 @@ class ClientCommandTest {
         assertNotNull(command.getDocumentNumber());
         assertNull(command.getFullName());
     }
+
+    @Test
+    void equals() {
+        var command = new ClientCommand(1L, "123", "John Doe");
+        var command2 = new ClientCommand(1L, "123", "John Doe");
+        assertTrue(command.equals(command2));
+    }
 }
