@@ -2,14 +2,14 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-
 import { ActivatedRoute, Router } from '@angular/router';
-import { ClientHttpService } from 'src/app/core/services/client/client-http.service';
-import { Appointment } from 'src/app/core/models/appointment';
-import { DateUtils } from 'src/app/shared/utils/date-utils';
-import { AppointmentHttpService } from 'src/app/core/services/appointment/appointment-http.service';
 import { MatSnackBar } from '@angular/material';
-import { Client } from 'src/app/core/models/client';
+
+import { Client } from '@app/core/models/client';
+import { AppointmentHttpService } from '@app/core/services/appointment/appointment-http.service';
+import { ClientHttpService } from '@app/core/services/client/client-http.service';
+import { Appointment } from '@app/core/models/appointment';
+import { DateUtils } from '@app/shared/utils/date-utils';
 
 @Component({
   selector: 'app-new-appointment',

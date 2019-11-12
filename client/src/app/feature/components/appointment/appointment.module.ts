@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppointmentComponent } from './appointment.component';
-import { SharedModule } from 'src/app/shared/shared.module';
 import { AppointmentRoutingModule } from './appointment-routing.module';
 import { NewAppointmentComponent } from './new-appointment/new-appointment.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 import { AppointmentService } from './appointment.service';
 import { AppointmentListComponent } from './appointment-list/appointment-list.component';
+import { SharedModule } from '@app/shared/shared.module';
 
 @NgModule({
   imports: [

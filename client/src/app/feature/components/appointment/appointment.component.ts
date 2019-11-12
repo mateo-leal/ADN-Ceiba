@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { Observable } from 'rxjs';
 
-import { Appointment } from 'src/app/core/models/appointment';
 import { AppointmentService } from './appointment.service';
-import { ConfirmDeleteDialogComponent } from '../../../shared/components/confirm-delete-dialog/confirm-delete-dialog.component';
+import { Appointment } from '@app/core/models/appointment';
+import { ConfirmDeleteDialogComponent } from '@app/shared/components/confirm-delete-dialog/confirm-delete-dialog.component';
+
 
 @Component({
   selector: 'app-appointment',

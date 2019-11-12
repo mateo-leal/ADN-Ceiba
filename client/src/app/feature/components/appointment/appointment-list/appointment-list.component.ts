@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Appointment } from 'src/app/core/models/appointment';
+
+import { Appointment } from '@app/core/models/appointment';
 
 @Component({
   selector: 'app-appointment-list',

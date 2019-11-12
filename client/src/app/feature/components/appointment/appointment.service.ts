@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Appointment } from 'src/app/core/models/appointment';
-import { AppointmentHttpService } from 'src/app/core/services/appointment/appointment-http.service';
+
+import { AppointmentHttpService } from '@app/core/services/appointment/appointment-http.service';
+import { Appointment } from '@app/core/models/appointment';
 
 @Injectable()
 export class AppointmentService {

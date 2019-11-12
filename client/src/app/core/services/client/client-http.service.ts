@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Client } from '../../models/client';
-import { environment } from '../../../../environments/environment';
+
+import { environment } from '@env/environment';
+
+import { Client } from '@app/core/models/client';
 
 @Injectable()
 export class ClientHttpService {

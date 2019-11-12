@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ClientHttpService } from 'src/app/core/services/client/client-http.service';
 import { MatDialog, MatSnackBar } from '@angular/material';
-import { ConfirmDeleteDialogComponent } from 'src/app/shared/components/confirm-delete-dialog/confirm-delete-dialog.component';
 import { Observable } from 'rxjs';
-import { AppointmentHttpService } from 'src/app/core/services/appointment/appointment-http.service';
-import { Client } from 'src/app/core/models/client';
+
+import { Client } from '@app/core/models/client';
+import { ClientService } from './client.service';
+import { ConfirmDeleteDialogComponent } from '@app/shared/components/confirm-delete-dialog/confirm-delete-dialog.component';
+import { Appointment } from '@app/core/models/appointment';
+
 
 @Component({
   selector: 'app-client',
@@ -16,8 +18,7 @@ export class ClientComponent implements OnInit {
   clients: Client[];
   displayedColumns: string[] = ['name', 'documentNumber', 'actions'];
 
-  constructor(private appointmentService: AppointmentHttpService,
-              private clientService: ClientHttpService,
+  constructor(private clientService: ClientService,
               private dialog: MatDialog,
               private snackbar: MatSnackBar) { }
 
@@ -25,40 +26,44 @@ export class ClientComponent implements OnInit {
     this._findAllClients();
   }
 
-  delete(client: Client) {
+  onDelete(client: Client) {
     this._confirmElimination(
       `¿Estás seguro que deseas eliminar al cliente ${client.fullName}?`)
       .subscribe(confirm => {
         if (confirm) {
-          this.appointmentService.findByClient(client.documentNumber)
-            .subscribe(appointments => {
+          this.clientService.appointmentsByClient(client)
+            .then(appointments => {
               if (!appointments) {
-                this.clientService.delete(client.id).subscribe(() => {
-                  this.snackbar.open('Se eliminó el cliente correctamente', 'Cerrar', {
-                    duration: 5000,
-                  });
-                  this._findAllClients();
-                });
+                this.clientService.delete(client)
+                  .then(() => {
+                    this._throwMessage('Se eliminó el cliente correctamente');
+                    this._findAllClients();
+                  }).catch(() => this._throwMessage('Ocurrió un error eliminando el cliente'));
               } else {
-                this.snackbar.open('El cliente tiene citas registradas', 'Cerrar', {
-                  duration: 5000,
-                });
+                this._throwMessage('El cliente tiene citas registradas');
               }
-            });
+            }).catch(() => this._throwMessage('Ocurrió un error consultando las citas del cliente'));
         }
       });
   }
 
-  _findAllClients() {
+  private _findAllClients() {
     this.clientService.findAll()
-      .subscribe(clients => this.clients = clients);
+      .then(clients => this.clients = clients)
+      .catch(() => this._throwMessage('Ocurrió un error consultando los clientes'));
   }
 
-  _confirmElimination(text: string): Observable<boolean> {
+  private _confirmElimination(text: string): Observable<boolean> {
     const dialogRef = this.dialog.open(ConfirmDeleteDialogComponent, {
       width: '450px',
       data: text
     });
     return dialogRef.afterClosed();
+  }
+
+  private _throwMessage(message: string): void {
+    this.snackbar.open(message, 'Cerrar', {
+      duration: 5000,
+    });
   }
 }

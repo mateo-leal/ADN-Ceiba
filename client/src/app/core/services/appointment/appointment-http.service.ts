@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Appointment } from '../../models/appointment';
-import { environment } from '../../../../environments/environment';
+
+import { environment } from '@env/environment';
+
+import { Appointment } from '@app/core/models/appointment';
 
 @Injectable()
 export class AppointmentHttpService {
