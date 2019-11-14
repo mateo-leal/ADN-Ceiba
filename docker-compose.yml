@@ -1,0 +1,11 @@
+
+version: '2'
+services:
+  citas-medicas-front:
+    build: client/.
+    ports:
+      - "4200:80"
+    depends_on:
+      - citas-medicas-back
+  citas-medicas-back:
+    build: server/.
