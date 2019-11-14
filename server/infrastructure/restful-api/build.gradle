@@ -1,0 +1,28 @@
+plugins {
+    id 'org.springframework.boot' version '2.2.0.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://projectlombok.org/edge-releases' }
+}
+
+bootJar {
+    enabled = false
+}
+
+dependencies {
+    implementation project(':domain')
+    implementation project(':application')
+
+    compileOnly 'org.projectlombok:lombok:edge-SNAPSHOT'
+    annotationProcessor 'org.projectlombok:lombok:edge-SNAPSHOT'
+
+    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.7.0'
+    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.7.0'
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.2.1.RELEASE'
+}
