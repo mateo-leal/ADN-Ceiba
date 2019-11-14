@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
@@ -22,6 +22,6 @@ class FindClientHandlerTest {
         var handler = new FindClientHandler(service);
 
         // act - assert
-        assertTrue(() -> handler.execute("").isPresent());
+        assertThat(handler.execute("")).isPresent();
     }
 }

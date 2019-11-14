@@ -7,8 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 
@@ -26,7 +25,7 @@ class FindAllClientServiceTest {
         var results = service.execute();
 
         // assert
-        assertFalse(results::isEmpty);
+        assertThat(results).isNotEmpty();
     }
 
     @Test
@@ -40,6 +39,6 @@ class FindAllClientServiceTest {
         var results = service.execute();
 
         // assert
-        assertTrue(results::isEmpty);
+        assertThat(results).isEmpty();
     }
 }

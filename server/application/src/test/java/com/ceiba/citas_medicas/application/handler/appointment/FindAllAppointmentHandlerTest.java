@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 
@@ -26,6 +26,6 @@ class FindAllAppointmentHandlerTest {
         var handler = new FindAllAppointmentHandler(service);
 
         // act - assert
-        assertFalse(handler.execute()::isEmpty);
+        assertThat(handler.execute()).isNotEmpty();
     }
 }

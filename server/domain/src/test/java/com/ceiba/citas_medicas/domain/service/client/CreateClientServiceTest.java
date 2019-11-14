@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -21,14 +21,14 @@ class CreateClientServiceTest {
         doAnswer(invocation -> {
             // assert
             var clientArg = (Client) invocation.getArgument(0);
-            assertNotNull(clientArg);
-            assertNull(clientArg.getId());
+            assertThat(clientArg).isNotNull();
+            assertThat(clientArg.getId()).isNull();
             return null;
         }).when(persistence).save(any(Client.class));
         var service = new CreateClientService(persistence);
 
         // act - assert
-        assertDoesNotThrow(() -> service.execute(client));
+        assertThatCode(() -> service.execute(client)).doesNotThrowAnyException();
     }
 
     @Test
@@ -39,13 +39,14 @@ class CreateClientServiceTest {
         doAnswer(invocation -> {
             // assert
             var clientArg = (Client) invocation.getArgument(0);
-            assertNotNull(clientArg);
+            assertThat(clientArg).isNotNull();
             return null;
         }).when(persistence).save(any(Client.class));
         doReturn(Optional.of(client)).when(persistence).findByDocumentNumber(anyString());
         var service = new CreateClientService(persistence);
 
         // act - assert
-        assertThrows(EntityExistsException.class, () -> service.execute(client));
+        assertThatThrownBy(() -> service.execute(client))
+                .isInstanceOf(EntityExistsException.class);
     }
 }

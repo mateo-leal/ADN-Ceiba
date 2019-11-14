@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class AppointmentFactoryTest {
 
@@ -23,9 +23,9 @@ class AppointmentFactoryTest {
         // act
         var appointment = AppointmentFactory.toModel(command);
         // assert
-        assertEquals(command.getAppointmentDate(), appointment.getAppointmentDate());
-        assertEquals(command.getCreatedAt(), appointment.getCreatedAt());
-        assertEquals(clientCommand, ClientFactory.toCommand(appointment.getClient()));
+        assertThat(appointment.getAppointmentDate()).isEqualTo(command.getAppointmentDate());
+        assertThat(appointment.getCreatedAt()).isEqualTo(command.getCreatedAt());
+        assertThat(ClientFactory.toCommand(appointment.getClient())).isEqualTo(clientCommand);
     }
 
     @Test
@@ -37,9 +37,9 @@ class AppointmentFactoryTest {
         // act
         var appointment = AppointmentFactory.toModel(command);
         // assert
-        assertEquals(command.getAppointmentDate(), appointment.getAppointmentDate());
-        assertEquals(LocalDate.now(), appointment.getCreatedAt().toLocalDate());
-        assertEquals(clientCommand, ClientFactory.toCommand(appointment.getClient()));
+        assertThat(appointment.getAppointmentDate()).isEqualTo(command.getAppointmentDate());
+        assertThat(appointment.getCreatedAt().toLocalDate()).isEqualTo(LocalDate.now());
+        assertThat(ClientFactory.toCommand(appointment.getClient())).isEqualTo(clientCommand);
     }
 
     @Test
@@ -51,10 +51,10 @@ class AppointmentFactoryTest {
         // act
         var command = AppointmentFactory.toCommand(appointment);
         // assert
-        assertEquals(appointment.getId(), command.getId());
-        assertEquals(appointment.getAppointmentDate(), command.getAppointmentDate());
-        assertEquals(appointment.getCreatedAt(), command.getCreatedAt());
-        assertEquals(appointment.getPrice(), command.getPrice());
-        assertEquals(appointment.getClient(), ClientFactory.toModel(command.getClient()));
+        assertThat(command.getId()).isEqualTo(appointment.getId());
+        assertThat(command.getAppointmentDate()).isEqualTo(appointment.getAppointmentDate());
+        assertThat(command.getCreatedAt()).isEqualTo(appointment.getCreatedAt());
+        assertThat(command.getPrice()).isEqualTo(appointment.getPrice());
+        assertThat(ClientFactory.toModel(command.getClient())).isEqualTo(appointment.getClient());
     }
 }

@@ -4,7 +4,7 @@ import com.ceiba.citas_medicas.domain.persistence.AppointmentPersistence;
 import com.ceiba.citas_medicas.domain.persistence.ClientPersistence;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 
 class BeanConfigTest {
@@ -16,7 +16,7 @@ class BeanConfigTest {
         var appointmentPersistence = mock(AppointmentPersistence.class);
 
         // act - assert
-        assertNotNull(beanConfig.getCreateAppointmentService(appointmentPersistence));
+        assertThat(beanConfig.getCreateAppointmentService(appointmentPersistence)).isNotNull();
     }
 
     @Test
@@ -26,7 +26,7 @@ class BeanConfigTest {
         var appointmentPersistence = mock(AppointmentPersistence.class);
 
         // act - assert
-        assertNotNull(beanConfig.getFindAllAppointmentService(appointmentPersistence));
+        assertThat(beanConfig.getFindAllAppointmentService(appointmentPersistence)).isNotNull();
     }
 
     @Test
@@ -36,7 +36,7 @@ class BeanConfigTest {
         var appointmentPersistence = mock(AppointmentPersistence.class);
 
         // act - assert
-        assertNotNull(beanConfig.getFindAppointmentService(appointmentPersistence));
+        assertThat(beanConfig.getFindAppointmentService(appointmentPersistence)).isNotNull();
     }
 
     @Test
@@ -46,7 +46,7 @@ class BeanConfigTest {
         var appointmentPersistence = mock(AppointmentPersistence.class);
 
         // act - assert
-        assertNotNull(beanConfig.getDeleteAppointmentService(appointmentPersistence));
+        assertThat(beanConfig.getDeleteAppointmentService(appointmentPersistence)).isNotNull();
     }
 
     @Test
@@ -56,7 +56,7 @@ class BeanConfigTest {
         var appointmentPersistence = mock(AppointmentPersistence.class);
 
         // act - assert
-        assertNotNull(beanConfig.getFindByClientAppoinmentService(appointmentPersistence));
+        assertThat(beanConfig.getFindByClientAppoinmentService(appointmentPersistence)).isNotNull();
     }
 
     @Test
@@ -66,7 +66,7 @@ class BeanConfigTest {
         var clientPersistence = mock(ClientPersistence.class);
 
         // act - assert
-        assertNotNull(beanConfig.getCreateClientService(clientPersistence));
+        assertThat(beanConfig.getCreateClientService(clientPersistence)).isNotNull();
     }
 
     @Test
@@ -76,7 +76,7 @@ class BeanConfigTest {
         var clientPersistence = mock(ClientPersistence.class);
 
         // act - assert
-        assertNotNull(beanConfig.getDeleteClientService(clientPersistence));
+        assertThat(beanConfig.getDeleteClientService(clientPersistence)).isNotNull();
     }
 
     @Test
@@ -86,7 +86,7 @@ class BeanConfigTest {
         var clientPersistence = mock(ClientPersistence.class);
 
         // act - assert
-        assertNotNull(beanConfig.getFindAllClientService(clientPersistence));
+        assertThat(beanConfig.getFindAllClientService(clientPersistence)).isNotNull();
     }
 
     @Test
@@ -96,6 +96,6 @@ class BeanConfigTest {
         var clientPersistence = mock(ClientPersistence.class);
 
         // act - assert
-        assertNotNull(beanConfig.getFindClientService(clientPersistence));
+        assertThat(beanConfig.getFindClientService(clientPersistence)).isNotNull();
     }
 }

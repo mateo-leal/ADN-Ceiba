@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -26,14 +26,14 @@ class CreateAppointmentServiceTest {
         doAnswer(invocation -> {
             // assert
             var appointmentArg = (Appointment) invocation.getArgument(0);
-            assertNotNull(appointmentArg);
-            assertNull(appointmentArg.getId());
+            assertThat(appointmentArg).isNotNull();
+            assertThat(appointmentArg.getId()).isNull();
             return null;
         }).when(persistence).save(any(Appointment.class));
         var service = new CreateAppointmentService(persistence);
 
         // act - assert
-        assertDoesNotThrow(() -> service.execute(appointment));
+        assertThatCode(() -> service.execute(appointment)).doesNotThrowAnyException();
     }
 
     @Test
@@ -46,13 +46,14 @@ class CreateAppointmentServiceTest {
         doAnswer(invocation -> {
             // assert
             var appointmentArg = (Appointment) invocation.getArgument(0);
-            assertNotNull(appointmentArg);
+            assertThat(appointmentArg).isNotNull();
             return null;
         }).when(persistence).save(any(Appointment.class));
         doReturn(Optional.of(appointment)).when(persistence).find(anyLong());
         var service = new CreateAppointmentService(persistence);
 
         // act - assert
-        assertThrows(EntityExistsException.class, () -> service.execute(appointment));
+        assertThatThrownBy(() -> service.execute(appointment))
+                .isInstanceOf(EntityExistsException.class);
     }
 }

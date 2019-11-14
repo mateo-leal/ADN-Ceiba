@@ -2,20 +2,23 @@ package com.ceiba.citas_medicas.domain.model;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ClientTest {
 
     @Test
     void instance_when_numeroDocumento_is_blank() {
         // arrange - act - assert
-        assertThrows(IllegalArgumentException.class, () -> new Client("   ", "John Doe"));
+        assertThatThrownBy(() -> new Client("   ", "John Doe"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void instance_when_nombres_is_blank() {
         // arrange - act - assert
-        assertThrows(IllegalArgumentException.class, () -> new Client("123", "   "));
+        assertThatThrownBy(() -> new Client("123", "   "))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -24,7 +27,7 @@ class ClientTest {
         var persona = new Client("123", "John Doe");
 
         // act - assert
-        assertNotNull(persona);
+        assertThat(persona).isNotNull();
     }
 
     @Test
@@ -40,9 +43,9 @@ class ClientTest {
         persona.setDocumentNumber(numeroDocumento);
 
         // assert
-        assertEquals(id, persona.getId());
-        assertEquals(nombre, persona.getFullName());
-        assertEquals(numeroDocumento, persona.getDocumentNumber());
+        assertThat(persona.getId()).isEqualTo(id);
+        assertThat(persona.getFullName()).isEqualTo(nombre);
+        assertThat(persona.getDocumentNumber()).isEqualTo(numeroDocumento);
     }
 
     @Test
@@ -51,14 +54,14 @@ class ClientTest {
         var client = new Client(1L, "123", "John Doe");
         var client2 = new Client(1L, "123", "John Doe");
         // act - assert
-        assertFalse(client.equals("not the same class"));
-        assertTrue(client.equals(client2));
+        assertThat(client.equals("not the same class")).isFalse();
+        assertThat(client.equals(client2)).isTrue();
     }
 
     @Test
     void hash() {
         final var hashCode = 32;
         final var client = new Client(1L, "123", "John Doe");
-        assertEquals(hashCode, client.hashCode());
+        assertThat(client.hashCode()).isEqualTo(hashCode);
     }
 }

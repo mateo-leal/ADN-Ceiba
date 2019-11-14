@@ -7,7 +7,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class AppointmentTest {
 
@@ -19,7 +20,7 @@ class AppointmentTest {
             var client = new Client("123", "John Doe");
             var appointment = new Appointment(LocalDateTime.now().plusDays(1), client);
             // assert
-            assertNotNull(appointment);
+            assertThat(appointment).isNotNull();
         }
 
     }
@@ -30,7 +31,8 @@ class AppointmentTest {
         var persona = new Client("123", "John Doe");
 
         // act - assert
-        assertThrows(IllegalArgumentException.class, () -> new Appointment(LocalDateTime.now(), persona));
+        assertThatThrownBy(() -> new Appointment(LocalDateTime.now(), persona))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -41,7 +43,8 @@ class AppointmentTest {
         var fechaCreacion = LocalDateTime.of(2019, Month.OCTOBER, 26, 12, 0);
 
         // act - assert
-        assertThrows(IllegalArgumentException.class, () -> new Appointment(fechaCreacion, LocalDateTime.now(), persona));
+        assertThatThrownBy(() -> new Appointment(fechaCreacion, LocalDateTime.now(), persona))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -51,7 +54,8 @@ class AppointmentTest {
         var persona = new Client("123", "John Doe");
 
         // act - assert
-        assertThrows(IllegalArgumentException.class, () -> new Appointment(today.plusDays(1), today, persona));
+        assertThatThrownBy(() -> new Appointment(today.plusDays(1), today, persona))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -64,7 +68,7 @@ class AppointmentTest {
         var cita = new Appointment(today, today.plusDays(1), persona);
 
         // assert
-        assertNotNull(cita);
+        assertThat(cita).isNotNull();
     }
 
     @Test
@@ -79,7 +83,7 @@ class AppointmentTest {
         var cita = new Appointment(today, weekend, persona);
 
         // assert
-        assertEquals(expectedPrice, cita.getPrice());
+        assertThat(cita.getPrice()).isEqualTo(expectedPrice);
     }
 
     @Test
@@ -94,7 +98,7 @@ class AppointmentTest {
         var cita = new Appointment(today, notWeekend, persona);
 
         // assert
-        assertEquals(expectedPrice, cita.getPrice());
+        assertThat(cita.getPrice()).isEqualTo(expectedPrice);
     }
 
     @Test
@@ -111,9 +115,9 @@ class AppointmentTest {
         cita.setClient(persona);
 
         // assert
-        assertEquals(id, cita.getId());
-        assertEquals(fechaCreacion, cita.getCreatedAt());
-        assertEquals(fechaCita, cita.getAppointmentDate());
-        assertEquals(persona, cita.getClient());
+        assertThat(cita.getId()).isEqualTo(id);
+        assertThat(cita.getCreatedAt()).isEqualTo(fechaCreacion);
+        assertThat(cita.getAppointmentDate()).isEqualTo(fechaCita);
+        assertThat(cita.getClient()).isEqualTo(persona);
     }
 }

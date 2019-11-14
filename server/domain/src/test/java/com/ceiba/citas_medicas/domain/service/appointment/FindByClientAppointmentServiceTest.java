@@ -10,8 +10,7 @@ import java.time.Month;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
@@ -32,7 +31,7 @@ class FindByClientAppointmentServiceTest {
         var listAppointment = service.execute(client);
 
         // assert
-        assertFalse(listAppointment::isEmpty);
+        assertThat(listAppointment).isNotEmpty();
     }
 
     @Test
@@ -47,6 +46,6 @@ class FindByClientAppointmentServiceTest {
         var listAppointment = service.execute(client);
 
         // assert
-        assertTrue(listAppointment::isEmpty);
+        assertThat(listAppointment).isEmpty();
     }
 }

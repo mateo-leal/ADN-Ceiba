@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 
@@ -21,6 +21,6 @@ class FindAllClientHandlerTest {
         var handler = new FindAllClientHandler(service);
 
         // act - assert
-        assertFalse(handler.execute()::isEmpty);
+        assertThat(handler.execute()).isNotEmpty();
     }
 }

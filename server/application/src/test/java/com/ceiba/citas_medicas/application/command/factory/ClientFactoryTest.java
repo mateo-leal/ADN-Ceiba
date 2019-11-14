@@ -4,7 +4,7 @@ import com.ceiba.citas_medicas.application.command.ClientCommand;
 import com.ceiba.citas_medicas.domain.model.Client;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class ClientFactoryTest {
 
@@ -15,9 +15,9 @@ class ClientFactoryTest {
         // act
         var client = ClientFactory.toModel(command);
         // assert
-        assertEquals(command.getId(), client.getId());
-        assertEquals(command.getDocumentNumber(), client.getDocumentNumber());
-        assertEquals(command.getFullName(), client.getFullName());
+        assertThat(client.getId()).isEqualTo(command.getId());
+        assertThat(client.getDocumentNumber()).isEqualTo(command.getDocumentNumber());
+        assertThat(client.getFullName()).isEqualTo(command.getFullName());
     }
 
     @Test
@@ -27,8 +27,8 @@ class ClientFactoryTest {
         // act
         var command = ClientFactory.toCommand(client);
         // assert
-        assertEquals(client.getId(), command.getId());
-        assertEquals(client.getDocumentNumber(), command.getDocumentNumber());
-        assertEquals(client.getFullName(), command.getFullName());
+        assertThat(command.getId()).isEqualTo(client.getId());
+        assertThat(command.getDocumentNumber()).isEqualTo(client.getDocumentNumber());
+        assertThat(command.getFullName()).isEqualTo(client.getFullName());
     }
 }

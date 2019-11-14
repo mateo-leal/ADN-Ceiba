@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
@@ -28,6 +28,6 @@ class FindByClientAppoinmentHandlerTest {
         var handler = new FindByClientAppoinmentHandler(service);
 
         // act - assert
-        assertFalse(() -> handler.execute(new ClientCommand(1L, "123", "John Doe")).isEmpty());
+        assertThat(handler.execute(new ClientCommand(1L, "123", "John Doe"))).isNotEmpty();
     }
 }
