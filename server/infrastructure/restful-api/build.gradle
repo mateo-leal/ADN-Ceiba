@@ -1,6 +1,7 @@
 plugins {
     id 'org.springframework.boot' version '2.2.0.RELEASE'
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'java'
 }
 
 repositories {
@@ -12,10 +13,11 @@ bootJar {
     enabled = false
 }
 
-dependencies {
-    implementation project(':domain')
-    implementation project(':application')
+jar {
+    enabled = true
+}
 
+dependencies {
     compileOnly 'org.projectlombok:lombok:edge-SNAPSHOT'
     annotationProcessor 'org.projectlombok:lombok:edge-SNAPSHOT'
 
@@ -23,6 +25,15 @@ dependencies {
     compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.7.0'
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation project(':domain')
+    compile project(':application')
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    testImplementation project(':infrastructure:h2-repository')
+}
 
-    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.2.1.RELEASE'
+test {
+    useJUnitPlatform()
+    dependsOn 'cleanTest'
 }

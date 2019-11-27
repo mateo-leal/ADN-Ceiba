@@ -1,3 +1,21 @@
+group = 'com.ceiba'
+version = '1.0-SNAPSHOT'
+sourceCompatibility = 11
+
+jar {
+    enabled = true
+}
+
 dependencies {
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
+
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.6.0-M1'
+    testCompile group: 'org.junit.platform', name: 'junit-platform-runner', version: '1.6.0-M1'
+    testCompile group: 'org.mockito', name: 'mockito-core', version: '2.1.0'
+    testCompile group: 'org.assertj', name: 'assertj-core', version: '3.11.1'
+}
+
+test {
+    useJUnitPlatform()
+    dependsOn 'cleanTest'
 }

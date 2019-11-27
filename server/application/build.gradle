@@ -1,6 +1,19 @@
+plugins {
+    id 'org.springframework.boot' version '2.2.0.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+}
+
 repositories {
     mavenCentral()
     maven { url 'https://projectlombok.org/edge-releases' }
+}
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
 }
 
 dependencies {
@@ -10,4 +23,13 @@ dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.2.0.RELEASE'
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.10.0'
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+
+test {
+    useJUnitPlatform()
+    dependsOn 'cleanTest'
 }
